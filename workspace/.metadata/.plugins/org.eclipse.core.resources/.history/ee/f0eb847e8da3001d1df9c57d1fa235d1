@@ -1,0 +1,57 @@
+package Exam02;
+
+import java.util.Scanner;
+
+public class Exam_02 {
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		Manager menus = new Manager();
+
+
+		while(true) {
+			System.out.println("<< Cafe H >>");
+			System.out.println("1. 메뉴추가");
+			System.out.println("2. 메뉴목록");
+			int menu = Integer.parseInt(sc.nextLine());
+
+			if(menu==1) {
+				System.out.print("음료 번호 : ");
+				int num = Integer.parseInt(sc.nextLine());
+
+				System.out.print("음료 이름 : ");
+				String name = sc.nextLine();
+
+				System.out.print("가격 : ");
+				int price = Integer.parseInt(sc.nextLine());
+
+				menus.addMenu(new CafeMenu(1, "Americano", 2));
+
+			}else if(menu==2) {
+				CafeMenu[] cafe = menus.getMenu();
+
+				System.out.println("번호\t이름\t가격");
+				for(int i=0; i<menus.getIndex(); i++) {
+					System.out.println(cafe[i].getNum() +"\t"+
+							cafe[i].getName()+"\t"+
+							cafe[i].getPrice());
+				}
+
+			}	
+		}
+
+		//		CafeMenu Am = new CafeMenu(1001, "Americano" ,2500);
+		//		
+		//		System.out.println("상품번호 : " + Am.getNum()
+		//		+"\t" + " 상품명 : " + Am.getName()
+		//		+"\t" +" 가격 : " + Am.getPrice());
+		//		
+		//		CafeMenu La = new CafeMenu(1002, "CafeLatte" ,3000);
+		//		
+		//		System.out.println("상품번호 : " + La.getNum()
+		//		+"\t" + " 상품명 : " + La.getName()
+		//		+"\t" +" 가격 : " + La.getPrice());
+
+
+	}
+}

@@ -1,0 +1,20 @@
+package Exam01;
+
+public class Manager {
+	//teachers_code 에서 데이터와 관련된 명령을 다 가져온다. 
+	private Movie[] movie = new Movie[100];
+	private int index = 0;
+	
+	public void addMovie(Movie movie) {
+		this.movie[index++] = movie;
+	}
+	
+	
+	public Movie[] getMovie() {
+		return movie;
+	}
+	
+	
+	
+	
+}

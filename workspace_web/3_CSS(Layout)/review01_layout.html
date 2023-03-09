@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        *{box-sizing: border-box; }
+        
+
+        .container{height: 800px; width: 800px; margin: auto;}
+
+        .head{height: 15%; width: 100%; float: left;}
+            .headleft{float: left; height: 100%; width: 20%; }
+            .MainLogo{float: left; height: 100%; width: 60%; }
+            .subLogo{float: left; height: 100%; width: 20%; }
+
+        .navi{float: left; height: 5%; width: 100%; }
+            li{float: left;
+                list-style-type: none; font-size: 20px; height: 40px; line-height: 40px;
+                width: 25%; text-align: center; background-color: gray; cursor: pointer;}
+                li:hover{font-size: 20px; background-color: black; color:white;}
+
+        .body{float: left; width: 100%; height: 50%; }
+            .Contents{float: left; width: 60%; height: 100%;}
+                .edm{float: left; width: 100%; height: 100%;}
+            
+            .loginbox{float: left; height: 25%; width: 100%; line-height: 30px; color: white;}
+            .box{ float: left; border: 1px solid black; text-align: center; width: 100%; height: 30%;
+                background-color: black;}
+            .put{ float: left; width: 70%; height: 70%;}
+            .id{ float: left; width: 100%; height: 50%;}
+            .idInput{width: 100%; height: 100%; font-size: 15px;}
+
+            .pw{float: left; width: 100%; height: 50%;}
+            .pwInput{width: 100%; height: 100%; font-size: 15px;}
+
+            .click{float: left; border: 1px solid black; width: 30%; height: 70%;
+            padding-top: 3.3%; padding-left: 7%; background-color: black;}
+            .button{width: 50px; height: 45px;}
+            .button:hover{cursor: pointer; background-color: darkgoldenrod;}
+
+            .sidebody{float: left; width: 40%; height: 100%;}
+                .Email{float: left; height: 75%; width: 100%; }
+                .MailBox{float: left; height: 10%; width: 100%; border: 1px solid black;
+                    font-size: 20px; text-align: center;}
+                .maillist{float: left; width: 100%; height: 90%; overflow-y: scroll;
+                    border: 1px solid black; text-align: center;}
+                tr{border: 1px solid black;}
+                table{width: 100%; background-color: lightpink ;}
+
+        .bottom{float: left; height: 20%; width: 100%; background-color: azure;}
+
+        
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <div class="headleft">
+                <img src="1.jpg">
+            </div>
+            <div class="MainLogo">
+                <img src="key.jpg">
+            </div>
+            <div class="subLogo">
+                <img src="images.png">
+            </div>
+        </div>
+        <div class="navi">
+            <li>Home</li>
+            <li>AboutMe</li>
+            <li>Portfolio</li>
+            <li>Contact</li>
+        </div>
+        <div class="body">
+            <div class="Contents">
+                <iframe class="edm" width="560" height="315" src="https://www.youtube.com/embed/yRUtG6h5Kpk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="sidebody">
+                <div class="loginbox">
+                    <div class="box"><i class="fa-solid fa-address-card"></i> LoginBox</div>
+                    <div class="put">
+                        <div class="id">
+                            <input class="idInput" type="text" placeholder="ID를 입력하세요">
+                        </div>
+                        <div class="pw">
+                            <input class="pwInput" type="text" placeholder="PW를 입력하세요">
+                        </div>
+                    </div>
+                    <div class="click">
+                        <input class="button" type="button" value="login">
+                    </div>
+                </div>
+                <div class="Email">
+                    <div class="MailBox"><i class="fa-solid fa-envelope"></i> Mail Box</div>
+                    <div class="maillist">
+                        <table calss="table">
+                            <tr>
+                                <td>1번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>2번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>3번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>4번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>5번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>6번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>7번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>8번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>9번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>10번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>11번째 메일입니다.</td>
+                            </tr>
+                            <tr>
+                                <td>12번째 메일입니다.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>

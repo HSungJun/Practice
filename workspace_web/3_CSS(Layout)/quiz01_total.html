@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        *{box-sizing: border-box;}
+
+        body{background-color: black; color: white;}
+
+        .container{height: 1000px; width: 800px; margin: auto;}
+
+        .head{height: 15%; width: 100%; float: left;}
+            .headlogo{float: left; width: 20%; height: 100%;}
+            .headmain{float: left;  width: 60%; height: 100%;}
+            .headsub{float: left; width: 20%; height: 100%;}
+
+        
+        .navi{float: left; height: 5%; width: 100%;}
+            li{float: left; list-style-type: none; height: 50px; font-size: 20px; line-height: 40px;
+                text-align: center; width: 25%; transition-duration: 1s; border: 5px solid #e3bcb2;}
+            li:hover{background-color: black; color: #e3bcb2; font-size: 30px; cursor: pointer;}
+
+        .main{float: left; width: 100%; height: 60%;}
+            .contents{float: left; width: 65%; height: 100%; border: 5px solid #e3bcb2;}
+                .pic1{float: left; width: 100%; height: 45%;}    
+                .word1{float: left; width: 100%; height: 5%; text-align: center; line-height: 29.5px;}
+                .pic2{float: left; width: 100%; height: 50%;}
+                .youtube{float: left; width: 100%; height: 100%;}
+
+            .side{float: left; width: 35%; height: 100%;}
+                .loginbox{float: left; width: 100%; height: 25%; border: 5px solid #e3bcb2;}
+                    .loginword{height: 25%; text-align: center; border: 5px solid #e3bcb2;}
+                    .idbox{float: left; width: 100%; height: 25%; padding-left: 5%; padding-top: 1%;}
+                        .id{width: 95%; height: 90%; padding-left: 5%;}
+                    .pwbox{float: left; width: 100%; height: 25%; padding-left: 5%; padding-top: 1%;}
+                        .pw{width: 95%; height: 90%; padding-left: 5%}
+                    .button{float: left; width: 100%; height: 25%;}
+                        .click{width: 100%; height: 100%; color: #e3bcb2; cursor: pointer; font-size: 20px;}
+                        
+                .brandlist{float: left; height: 75%; width: 100%; border: 5px solid #e3bcb2;}
+                    .brandword{float: left; width: 100%; height: 10%; border: 5px solid black;
+                        text-align: center; line-height: 30px; font-size: 22px;}
+                    .list{float: left; width: 100%; height: 90%; overflow-y: scroll;
+                        border: 1px solid black; text-align: center;}
+                        table{width: 100%;}
+                        td{line-height: 35px; font-size: 18px; background-color: #e3bcb2; border: 1px solid black;}
+
+        .bottom{float: left; height: 20%; width: 100%;}
+                        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="head">
+            <div class="headlogo">
+                <img src="dd.png">
+            </div>
+            <div class="headmain">
+                <img src="main1.png">
+            </div>
+            <div class="headsub">
+                <img src="kk.png">
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="navi">
+                <li>Keboard</li>
+                <li>Keycap</li>
+                <li>Switch</li>
+                <li>ETC</li>
+            </div>
+        </div>    
+        <div class="main">
+            <div class="contents">
+                <div class="pic1">
+                    <img src="cyberboardjpg.jpg">
+                </div>
+                <div class="word1">Cyberboard R3</div>
+                <div class="pic2">
+                    <iframe class="youtube" width="560" height="315" src="https://www.youtube.com/embed/OQpWL_dEJm0" 
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                    clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="side">
+                <div class="loginbox">
+                    <div class="loginword">Login box</div>
+                    <div class="idbox">
+                        </i><input class="id" type="text" placeholder="ID를 입력하세요.">
+                    </div>
+                    <div class="pwbox">
+                        </i><input class="pw" type="text" placeholder="PW를 입력하세요.">
+                    </div>
+                    <div class="button">
+                        <input class="click" type="button" value="Login">
+                    </div>
+                </div>
+                <div class="brandlist">
+                    <div class="brandword">Brand List</div>
+                    <div class="list">
+                    <table class="table">
+                        <tr>
+                            <td>Cherry</td>
+                        </tr>
+                        <tr>
+                            <td>Corsair</td>
+                        </tr>
+                        <tr>
+                            <td>Ducky</td>
+                        </tr>
+                        <tr>
+                            <td>Durgod</td>
+                        </tr>
+                        <tr>
+                            <td>Durock</td>
+                        </tr>
+                        <tr>
+                            <td>Gateron</td>
+                        </tr>
+                        <tr>
+                            <td>G.skill</td>
+                        </tr>
+                        <tr>
+                            <td>Kailh</td>
+                        </tr>
+                        <tr>
+                            <td>Logitech</td>
+                        </tr>
+                        <tr>
+                            <td>Otemu</td>
+                        </tr>
+                        <tr>
+                            <td>Razer</td>
+                        </tr>
+                        <tr>
+                            <td>Topre</td>
+                        </tr>
+                        <tr>
+                            <td>TTC</td>
+                        </tr>
+                        <tr>
+                            <td>Vamilo</td>
+                        </tr>
+                        <tr>
+                            <td>YMDK</td>
+                        </tr>
+                        <tr>
+                            <td>ZealPC</td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom"> 
+            <img src="22.jpg">
+        </div>
+    </div>
+</body>
+</html>

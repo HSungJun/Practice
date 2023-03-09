@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*반응 선택자*/
+    .c:hover{ /*마우스가 올라가면 색이 변함*/
+            background-color: blueviolet;
+            cursor:pointer /*마우스 모양이 변함*/
+        }
+    
+     /*   .c.d:hover{  클래그의 종류가 다르나 동일한 효과를 적용하고자 할 시 , 이용
+            background-color: blueviolet;       띄어쓰기 조심
+            cursor:pointer 
+        }
+    */
+
+        #a1.class{ /*ID가 a1 이면서 class 인 항목*/
+
+        }
+
+        p:active{
+            border: 3px solid black;
+        }
+
+        div.c{
+            color:tomato;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <p class="c">Hover Test 1</p>
+    <p class="c">Hover Test 2</p>
+    <p class="c">Hover Test 3</p>
+    <p class="d">Hover Test 4</p>
+    <p class="d">Hover Test 5</p>
+
+    <div class="c">Hover div</div>
+    <div class="c">Hover div</div>
+    <div class="c">Hover div</div>
+    <div class="c">Hover div</div>
+    <div class="c">Hover div</div>
+
+</body>
+</html>
