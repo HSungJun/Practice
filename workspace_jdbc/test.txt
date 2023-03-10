@@ -1,0 +1,21 @@
+
+
+/*
+1. searchUser 메서드를 실행하여 table 내에 하나이상의 데이터를 얻어오고자 하였으나 반환값이 잘못되었다.
+2. sql문에 ?를 사용하여 데이터를 검색하고자 하였으나 preparedStatement 값이 null 이어서 메서드 실행이 불가능하며, ?  String memberId를 통해 검색하고자 하였으나 ?에 String memberid 값이 입력되도록 하는 명령어가 존재하지 않는다.
+3. stmt = con.prepapareStatement(query); 에 오타가 있어 명령문이 실행되지 않는다.
+4. Member_Age 의 데이터 타입은 number로서 eclipse 에서는 Int 를 통해 입력받아야하나 String 값으로 입력도록 되어있음
+5. member_phone 과 member_addr 값을 얻어오기 위해 rs.getString을 통해 데이터를 얻어오고자 하였으나
+컬럼명의 입력이 잘못되어 데이터를 얻어오지 못함.
+
+1. ShopMember 값을 반환할 시 데이터를 가진 주소를 반하기 때문에
+public List<ShopMember> searchUser(String memberId) 로 번경하여 반환값을 바꿔주며, 
+메서드 하단에서 return 값 또한 list형태의 데이터로 반환하도록 변경해준다.
+2. preparedStatement stmt = con.prepareStatement(query); 로 변경한 이후
+stmt.setString(1, memberId) 를 통해 String 값을 입력할 시 이에 메서드가 정상적으로 실행되어 쿼리문을 통한 데이터를
+얻어올 수 있도록 변경해준다.
+3. 오타로 인한 실행불가로서 stmt.prepareStatement(query);​ 오타를 수정하여준다.
+4. shopMember.setMemberAge(rs.getInt("MEMBER_AGE")); 로 수정하여 int(number)값을 가진 MEMBER_AGE의 데이터를 정상적으로 가져올 수 있도록 한다.
+5. shopMember.setMemberAge(rs.getInt("MEMBER_PHONE)); 및 shopMember.setMemberAge(rs.getInt("MEMBER_ADDR")); 로 수정하여 컬럼명을 정확하게 입력하여 데이터를 가져올 수 있도록 변경해준다.​​
+
+*/
