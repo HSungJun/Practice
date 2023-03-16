@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--function-->
+    <!--코드의 분리, 에러검출 및 재사용 용이-->
+    <script>
+        function plus(num1,num2){
+           var result=num1+num2;
+           return result; 
+        }
+
+        var result = plus(10,5);
+        console.log(result);
+        
+        /* javascript에서 함수는 '값'이다. */
+
+        /*var func = plus / () 소괄호의 존재유무에 따라 다름. 존재시 function메서드 콜한거 리턴값 넣겠다. 없을시 주소만 담은것*/
+        var func = plus;
+        var result = func(50,100);
+        console.log(result);
+
+        function test(func,num1,num2){
+            return func(num1,num2);
+        }
+
+        var result = test(function(num1,num2)){
+            return num1/num2;
+        }
+    </script>
+</body>
+</html>
