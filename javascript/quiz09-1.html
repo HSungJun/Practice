@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="password" id="pw1"> <br>
+    <input type="password" id="pw2">
+    <p id="p"></p>
+
+    <script>
+        var pw1 = document.getElementById("pw1")
+        var pw2 = document.getElementById("pw2")
+        var p = document.getElementById("p")
+
+        inputpw2.onkeyup = function(e){
+            if(e.keyCode ==13) {
+        pw1.addEventListener("keyup",function(){
+            if(pw1.value == pw2.value){
+                p.innerHTML = "같음"
+            } else {p.innerHTML = "다름"}
+        })
+
+        pw2.addEventListener("keyup",function(){
+            if(pw1.value == pw2.value){
+                p.innerHTML = "같음"
+            } else {p.innerHTML = "다름"}
+            
+        })
+        }
+    }
+        
+    </script>
+</body>
+
+</html>
