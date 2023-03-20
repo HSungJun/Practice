@@ -25,6 +25,9 @@
     <button id="btn3">뒤쪽에 추가</button>
     <button id="btn4">제일 뒤 삭제</button> <br>
 
+    <br><br>
+    <button id="clear">전체삭제</button>
+
     <script>
         var list = document.getElementById("fruitlist")
 
@@ -32,16 +35,20 @@
         var btn2 = document.getElementById("btn2")
         var btn3 = document.getElementById("btn3")
         var btn4 = document.getElementById("btn4")
+        
 
         var front = document.getElementById("front")
         var end = document.getElementById("end")
+
+        var deleteall = document.getElementById("clear")
 
         var fruit = ["Banana","Grape","Orange"];
         list.textContent = fruit;
 
         btn1.onclick = function(){
-            if (front.value==""){
-                alert("입력안함");
+            
+            if (front.value.trim() ==""){
+                alert("뭐라도 써라!");
             } else{
                 fruit.unshift(front.value);
                 list.textContent = fruit;
@@ -56,8 +63,9 @@
         }
         
         btn3.onclick = function(){
-            if (end.value==""){
-                alert("입력안함");
+            
+            if (end.value.trim()==""){
+                alert("뭐라도 써라!");
             } else{
                 fruit.push(end.value);
                 list.textContent = fruit;
@@ -70,6 +78,13 @@
             list.textContent = fruit;
             end.value="";
         }
+
+        clear.onclick = function(){
+            fruit = [];
+            list.innerHTML = fruit;
+        }
+
+        //trim 문자열의 양쪽에서 공백문자를 제거하는 함수
     </script>
 
 

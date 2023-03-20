@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+        CSS - Cascading Style sheet
+        HTML에 스타일 시트를 저장하는 방법 
+        Inline Syyle Sheet
+        (File) Internal Style sheet
+        (File) External Style sheet
+
+       
+
+        ===============선택자 - (id, class, tag)
+        #id명{}
+
+        .class명{}
+
+        div(p...){}
+
+        {}내에 적용할 스타일들을 작성
+        color: 글씨색
+        border: 테두리 ()px solid 색상
+        background-color: 배경색
+        font-weigth: 폰트 두께
+        font-size: 폰트 사이즈
+
+        tag 내용 paragraph - 문단 나누기
+        
+        선택자 뒤 추가함으로서 특정 데이터를 선택 할 
+        *: contains - 를 포함하는 경우
+        ^: startwith - ~로 시작하는 경우 
+        $: endswith - ~로 마치는 경우
+        
+        p[id*="4"] / p[class^="d"] / p[class$="1"] {스타일 정의}
+        p태그 내 id 또는 클래스가 "" 내 데이터를 포함하거나 시작하거나 마치는 경우 선택
+        p:not(.c){} p태그에서 클래스가 c 가 아닌경우 선택
+        p:not(:last-of-type){} p태그에서 마지막 항목을 제외한 모두 (last-of-type)-마지막 항목
+        #a1.class{ /*ID가 a1 이면서 class 인 항목*/}
+
+        :hover{마우스가 올라갈 경우 스타일 적용}
+        :active{마우스를 클릭할 경우 스타일 적용}
+
+        =============== 자손 선택자
+        > 직계로 존재하는 자손선택
+        li > h4 {li태그 하위 h4태그 선택}
+        후손선택자는 띄어쓰기
+
+        =============== 동위 선택자
+        + 기호는 선택한 요소의 바로 뒷 요소
+        li+p{}
+        ~ 기호는 형제 요소들의 범위 선택*/
+        p~li{}
+
+        =============== 구조 선택자
+        div p:first-child{p 태그이면서 1번째 자손 인것으로 and 표현과 마찬가지 둘다 만족하지않을시 적용x
+        div p:last-child{p 태그이면서 마지막인것으로 and 표현과 마찬가지
+        div p:nth-child(3){p 태그이면서 3번째 인것으로 and 표현과 마찬가지
+        div p:first-of-type{p 태그중 1번째 것
+       /*odd 홀수 even 짝수*/  div p:nth-of-type(3n-1)
+
+        ================ 기타 선택자
+        div:empty{빈 태그를 선택하는 명령어
+        *{전체 선택자
+        
+        ------------------------------------------------------------------------------------------------
+
+        margin - 테두리 외 공간으로 자신을 기준으로 외부와의 정렬할 떄 사용
+        padding - 테두리 내 공간을 기점으로 내부의 데이터와 정렬할 떄 사용
+
+        html의 모든 태그는 display 속성을 가지고있음
+        display : inline, block
+
+        p태그 - block 속성으로 한줄을 전부 사용함.
+        inline의 경우 태그 크기만큼만 자리를 차지함.
+
+        float 의 경우 화면에서 띄우는 느낌의 기능으로 정렬을 위해 주로 사용됨.
+
+        overflow : hidden
+        ul 태그와 li 태그는 diplay block 속성으로 높이를 지정하지 않을시 child 태그가 float로 사라질시에 줄어들어
+        이를 방지하고자 사용
+
+        li태그만의 속성 - list-of-type:none  / 리스트의 앞에 모양을 정하는 기능
+
+        line-height: 글씨의 높이를 정하여 중앙정령하는 기능으로 px만 입력가능
+
+        text-align: center 글씨 중앙정렬 (좌우)
+
+        transition-duration: hover를 통한 효과의 재생시간 설정하는 기능
+
+        cursor:pointer: 호버를 통해 마우스가 올라갈 시 마우스의 모양을 변형시켜주는 기능
+
+        -----------------------------------------------------------------------------------------------
+
+        position - 태그의 위치를 지정하는기능
+        absolute - position이 static이 아닌 parent를 기준으로 위치를 지정함.
+        relative - 자신이 원래 있어야할 위치를 기준으로 위치를 지정가능.
+        static - 대부분의 기본 possition / z-index가 고정으로 값을 주어도 변경되지 않음.
+
+        z-index로 z 축 위치를 지정하여 변경이 가능하나 부모의 위치에 따라 지정된다.
+
+        -----------------------------------------------------------------------------------------------
+
+        transform - 태그의 모양을 변형시키는 기능
+        rotate('n'deg) n도 만큼 회전시키는 기능
+        sacle(n) n만큼 모양을 키우거나 줄이는 기능
+        translate('n'px,'m'px) x,y축을 n, m 만큼 이동 
+
+        ------------------------------------------------------------------------------------------------
+
+        input type="" placeholder=""
+        입력을 가능하게 하는 기능으로 "" 내에 text, password, button, image 등 여러 입력값을 사용할 수 있으며,
+        placeholder 의 경우 안내하는 멘트를 입력해 놓는 기능.
+
+    =============================================================================================================
+    
+    =============================================================================================================
+
+    Javascript (Livescript, ECMA6 Script(ES6) 라고도 명명)
+    HTML과 CSS에 동적 기능을 부여하는 언어
+
+    Internal Javascript / External Javascript / Inline JavaScript
+
+    Javascript는 오류가 발생할 수 있어 정확하게 작성해야 함.
+    <script type="text/javascript"> 내부에 작성해야함 </script> / type="text/javascript 는 생략가능 
+    
+    alert(경고 기능!); 알림창 출력 기능
+    var result = confirm(""); 확인 및 취소버튼을 가진 알림창 /var = variavle 변수는 아무거나 입력가능
+
+    console.log("Result : " + result) > ()내용을 콘솔창에 출력하는 기능
+    
+    var msg = prompt(""); ()내부에 알림멘트를 작성하며 경고창에 입력창이 있는 기능
+
+    
+
+
+    -->
+
+</head>
+<body>
+    
+</body>
+</html>
