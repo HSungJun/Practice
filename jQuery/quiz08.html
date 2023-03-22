@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Input Controls</legend>
+        <input type="text" id="title" placeholder="제목입력"><br>
+        <input type="text" id="contents" placeholder="내용입력"><br>
+        <input type="text" id="writer" placeholder="작성자명">
+        <button id="btn">추가하기</button>
+        <br><br>
+        <input type="text" id="del" placeholder="삭제할 제목">
+        <button id="delbtn">삭제하기</button>
+    </fieldset>
+    <hr>
+    <table id="table" border="1px">
+        <tr>
+                <th>제목</th>
+                <th>내용</th>    
+                <th>작성자</th>
+        </tr>
+        
+    </table>
+
+    <script>
+        $("#btn").on("click",function(){
+            let tr = $("<tr>");
+                $(tr).append("<td>"+$("#title").val());
+                    $(tr).append("<td>"+$("#contents").val());
+                        $(tr).append("<td>"+$("#writer").val());
+                            $("#table").append(tr);
+                            $("#title").val("")
+                            $("#contents").val("")
+                            $("#writer").val("")
+        })
+
+
+        //tr을 만들고 tr 안에 td를 만들고 title, contents, writer 값을 만들고 추가한다음 table에 추가한다.
+        $("#delbtn").on("click",function(){
+            let row = $("#del")
+            console.log(row);
+            $(row).remove();
+        })
+    </script>
+</body>
+</html>
