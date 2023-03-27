@@ -33,6 +33,9 @@
     </table>
 
     <script>
+
+
+
         $("#btn").on("click",function(){
             let tr = $("<tr>");
                 $(tr).append("<td>"+$("#title").val());
@@ -47,9 +50,7 @@
 
         //tr을 만들고 tr 안에 td를 만들고 title, contents, writer 값을 만들고 추가한다음 table에 추가한다.
         $("#delbtn").on("click",function(){
-            let row = $("#del")
-            console.log(row);
-            $(row).remove();
+            
         })
     </script>
 </body>
