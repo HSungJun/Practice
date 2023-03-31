@@ -17,10 +17,11 @@ public class LoginBox extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		System.out.println("id :"+id +",pw :" +pw);
+		System.out.println("id :"+id +", pw :" +pw);
 		
+		response.setContentType("text/html; charset=UTF-8"); // 한글 출력 코드
 		PrintWriter resp = response.getWriter();
-		resp.append("Login Complete");
+		resp.append("하이하이");
 	
 	}
 
