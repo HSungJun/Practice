@@ -1,0 +1,47 @@
+기존의 web 은 html 정적문서
+
+사요성을 높이기 위해 program을 추가함.
+> sevlet
+
+Web server > 정적 문서
+WAS server와 클라이언트를 연결하는 middleware > 
+
+eclips에서 servlet = class > 목적 = 클라이언트의 요청을 처리하는 class 라서 servlet임.(java에서만 servlet)
+superclass - 부모클래스
+
+servlet - 반드시 이 servlet을 상속받는 html이 client의 요청을 처리.
+doGet, doPost를 가진 servlet이어야만 요청을 처리해줌. (자격조건이 2개)
+
+form 태그의 action에 servlet이 들어가게됨.
+
+main = homepage 실행
+tomcat(main)이 servlet(class)을 가져다 쓴다.
+
+client form태그를 통해 데이터를 넘김. > a.html은 받을 능력이 없음. 
+
+client 는 index.html을 받음> action = Exam_01 > submit > server가 요청을 받음.
+클라이언트입장 > html 요청 = Request (서버에 기능들을 요청)
+서버 > 요청에 응답 = response
+
+request의 종류 (data 는 추가적인 데이터(client의 주소 등을 제외한 data))
+get방식	- request의 Head영역에 데이터를 담아 보내는 방식
+	- 목적지의 url 뒤에 정보를 붙여서 보냄.
+	- (보내고자하는 데이터의 양이 적고, 데이터가 url 뒤에 노출되기 떄문에 정보의 보안이 필요하지 않을 때 사용)
+
+post방식	- request의 body영역에 데이터를 담아 보내는 방식
+	- 보내고자 하는 데이터의 양이 많고 데이터가 body영역에 담겨 전송되기 때문에 보이지 않아 정보의 보안이 필요할 떄 사용.
+	
+	- post 방식은 절대 주소값은 가질 수 없음. (절대 주소값) - (ex) 검색시 주소값이 전부 동일할 경우 절대주소값이 동일.)
+
+Tomcat - WAS 로서 서버의 역할과 같다고 생각하면 됨. web server 는 정적문서 서버 was는 프로그램을 서비스하는 web server
+
+servlet? 물음표 뒤로는 전부 파라미터 (serch.naver? servlet으로 전달하는 파라미터 값)
+키값 밸류값 이 반복. asdf=asdf&sdf=sadf
+
+반드시 name 속성을 가져야 전달됨.
+
+servlet의 핵심역할 2가지 (매개변수가 두개)
+1. 클라이언트의 요청 처리. (request)
+2. 클라이언트에게 처리 결과 전달 (response)
+servlet에는 요청을 처리하는 코드와 결과를 담아주는 코드를 작서해야함. 
+
