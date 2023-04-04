@@ -1,0 +1,76 @@
+package servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/insdertMsg")
+public class insdertMsg extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String writer = request.getParameter("writer");
+		String msg = request.getParameter("msg");
+
+		System.out.println(writer +", "+ msg);
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		}catch(ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} 
+		//		jdbc 미인식시 class.forName으로 인식
+
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String dbid = "kh";
+		String dbpw = "kh";
+		String sql = "insert into messages values(messages_seq.nextval,?,?)";
+
+		try (
+				Connection con = DriverManager.getConnection(url, dbid, dbpw);
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			ppst.setString(1, writer);
+			ppst.setString(2, msg);
+			ppst.executeUpdate();
+			con.commit();
+			//			response.sendRedirect("succes.html"); 다른페이지로 이동할때 사용하는 명령
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter resp = response.getWriter();
+			resp.append("<html>");
+			resp.append("<head>");
+			resp.append("</head>");
+			resp.append("<body>");
+			resp.append("<button id='toIndex'>");
+			resp.append("to Index..");
+			resp.append("</button>");
+			resp.append("<script>");
+			resp.append("alert('Insert complete');");
+			resp.append("document.getElementById('toIndex').onclick = function(){location.href='index.html'}");
+			resp.append("</script>");
+			resp.append("</body>");
+			resp.append("</html>");
+
+
+
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
+
+
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+}
