@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    /*자손 선택자*/
+    li > h4 { /*> : 직계로 존재하는 자손 선택
+         후손 선택자는 띄어쓰기 사용(직계 or 모든것 선택됨)*/
+        background-color: pink;
+    }
+
+
+
+    /*동위 선택자 : + ~ 기호 사용*/
+    /* + 기호는 우리가 선택한 요소의 바로 뒷 요소*/
+    /* ~ 기호는 형제 요소들의 범위 선택*/
+
+    h5+ul{ color: gray;
+    }/*p+ p태그의 바로 옆에 있는 항목 + 여러개 사용 가능*/ 
+
+
+    p~li { color: rgb(238, 15, 15);
+    }/*p~ p태그 이후 모든 요소*/
+</style>
+</head>
+<body>
+    
+
+    <div>
+        <h4>자손1</h4>
+        <h5>자손2</h5>
+        <ul>
+            <li>
+                <h4>후손</h4>
+            </li>
+            <p>과일</p>
+            <li>Orange</li>
+            <li>Mangho</li>
+        </ul>
+    </div>
+
+</body>
+</html>

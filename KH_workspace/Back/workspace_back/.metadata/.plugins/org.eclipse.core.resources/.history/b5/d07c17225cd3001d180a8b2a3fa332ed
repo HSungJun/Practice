@@ -1,0 +1,139 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
+
+import dto.MessagesDTO;
+
+public class MessagesDAO {
+	
+	//Singletonn Design Pattern : 클래스에 대하여 인스턴스를 1개 이상 생성하지 못하게 통제하는 패턴 > 
+	// 기존의 메서드 호출마다 dbcp 인스턴스가 생성되어 과부하가 걸려 DBCP를 통하여 연결제한을 10개로 하였으나 
+	// DAO 또한 여러번 호출되기 때문에 이를 통제하고자 Singleton 사용
+	
+	// 1. 생성자를 private로 변경
+	// 2. static을 통한 messageDAO instance 생성
+	// 3. static method 생성
+	// 4. 찰나의 순간에 많은 접속자로 인해 instance가 두번 생성될 가능성 염두 - synchronized 사용 - 멀티스레드 기능 차단 /thread safe 상태 > 이후 사용자가 대기 > cost 발생(성능)/
+	
+
+	private static MessagesDAO instance = null;
+	//getInstance를 실행하면 instance를 반환
+	//조건을 통해 instance가 null 일 경우 MessagesDAO instance 주소를 담아 반환. null이 아닐 시 instance를 반환.
+	//Instance가 여러번 생성되지 않도록 해주는 작업. 
+	public synchronized static MessagesDAO getInstance() {
+		if(instance == null){
+			instance = new MessagesDAO();
+		}
+		return instance;
+	}
+	
+	
+	/*
+	 <Resource
+    	name="jdbc/ora"
+    	type="javax.sql.DataSource"
+    	username="kh"
+    	password="kh"
+    	driverClassName="oracle.jdbc.driver.OracleDriver"
+    	url="jdbc.oracle:thin@Localhost:1521:xe"
+    	initialSize="5"
+	/>  
+	 servers 에 context 에 대입
+	 
+	 
+	 
+	 
+	 */
+	
+	
+	
+	//인스턴스 생성마다 커넥션풀이 생성됨. 외부(멤버필드)로 빼놓을 시 하단 메서드 콜 시 커넥션풀이 재생성되는것을 방지
+//	private BasicDataSource bds = new BasicDataSource();
+	
+	//생성자로 만들어 사용.
+//	private MessagesDAO () {
+//		bds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+//		bds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+//		bds.setUsername("kh");
+//		bds.setPassword("kh");
+//		bds.setInitialSize(10);
+	};
+	
+	private Connection getConnection() throws Exception{
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+//		String dbid = "kh";
+//		String dbpw = "kh";
+//		Connection con = DriverManager.getConnection(url, dbid, dbpw);
+//		return con;
+		
+		//DBCP 운영 / 라이브러리 미삽입 > tomcat 에서는 기본적으로 dbcp라이브러리 내장됨.
+		return bds.getConnection();
+	}
+
+	public int insert(String writer, String msg) throws Exception {
+		String sql = "insert into messages values(messages_seq.nextval,?,?)";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			ppst.setString(1, writer);
+			ppst.setString(2, msg);
+			int result = ppst.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+
+
+	public List<MessagesDTO> selectAll() throws Exception{
+		String sql = "select * from messages";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);
+				ResultSet rs = ppst.executeQuery();){ 
+			//ResultSet은 활성화 중에만 사용 가능. 닫히기 전에 List에 담아 사용함.
+			List<MessagesDTO> result = new ArrayList<>();
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String writer = rs.getString("writer");
+				String message = rs.getString("message");
+				MessagesDTO dto = new MessagesDTO(id,writer,message);
+				result.add(dto); 
+			}
+			return result;
+
+		}
+	}
+
+	public int delete(int delid) throws Exception{
+		String sql = "delete from messages where id = ?";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			ppst.setInt(1, delid);
+			int result = ppst.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+
+	public int modify(int modId,String modWriter, String modMessage) throws Exception{
+		String sql = "update messages set writer = ?, message = ? where id=?";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			ppst.setString(1, modWriter);
+			ppst.setString(2, modMessage);
+			ppst.setInt(3, modId);
+			int result = ppst.executeUpdate();
+			return result;
+		}
+		
+	}
+
+
+
+}

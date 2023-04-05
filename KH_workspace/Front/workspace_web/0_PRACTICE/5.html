@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{box-sizing: border-box;}
+        .container{
+            position: relative;
+            border: 1px solid black; margin: auto; width: 512px; height: 267px;
+        }
+        
+        .black{
+            text-align: center; font-size: 60px; color: white; line-height: 267px;
+            position: absolute; transition-duration: 1s; opacity:0%;
+            width: 100%; height: 100%; background-color: rgba(0, 0, 0);
+        }
+        .pic{position: absolute; width: 100%; height: 100%;}
+        .black:hover{opacity: 50%; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="pic"><img src="/3_CSS(Layout)/cyberboardjpg.jpg"></div>
+        <div class="black">CyberBoard</div>
+    </div>
+</body>
+</html>

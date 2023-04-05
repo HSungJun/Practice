@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{border: 1px solid black; 
+        }
+    </style>
+</head>
+<body>
+    <fieldset> 
+        <legend> fruit </legend>
+        <div id="fruitlist"></div>
+    </fieldset> <br> <br>
+    <input type="text" id="front" placeholder="앞에서 이용될 데이터" value="">
+        
+    <button id="btn1">앞쪽에 추가</button>
+    <button id="btn2">제일 앞 삭제</button> <br> <br>
+
+    <input type="text" id="end" placeholder="뒤에서 이용될 데이터" value="">
+        
+    <button id="btn3">뒤쪽에 추가</button>
+    <button id="btn4">제일 뒤 삭제</button> <br>
+
+    <br><br>
+    <button id="clear">전체삭제</button>
+
+    <script>
+        var list = document.getElementById("fruitlist")
+
+        var btn1 = document.getElementById("btn1")
+        var btn2 = document.getElementById("btn2")
+        var btn3 = document.getElementById("btn3")
+        var btn4 = document.getElementById("btn4")
+        
+
+        var front = document.getElementById("front")
+        var end = document.getElementById("end")
+
+        var deleteall = document.getElementById("clear")
+
+        var fruit = ["Banana","Grape","Orange"];
+        list.textContent = fruit;
+
+        btn1.onclick = function(){
+            
+            if (front.value.trim() ==""){
+                alert("뭐라도 써라!");
+            } else{
+                fruit.unshift(front.value);
+                list.textContent = fruit;
+                front.value="";
+            }
+        }
+        
+        btn2.onclick = function(){
+            fruit.shift();
+            list.textContent = fruit;
+            front.value="";
+        }
+        
+        btn3.onclick = function(){
+            
+            if (end.value.trim()==""){
+                alert("뭐라도 써라!");
+            } else{
+                fruit.push(end.value);
+                list.textContent = fruit;
+                end.value="";
+            }
+        }
+
+        btn4.onclick = function(){
+            fruit.pop();
+            list.textContent = fruit;
+            end.value="";
+        }
+
+        clear.onclick = function(){
+            fruit = [];
+            list.innerHTML = fruit;
+        }
+
+        //trim 문자열의 양쪽에서 공백문자를 제거하는 함수
+    </script>
+
+
+</body>
+</html>

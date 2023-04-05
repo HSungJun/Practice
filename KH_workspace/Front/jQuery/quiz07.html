@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <style>
+        div{border: 1px solid black;}
+        #chatbox{height: 300px; width: 500px; margin: auto; overflow-y: auto; word-wrap: break-word;}
+        #input{height: 100px; width: 500px; display: block; margin: auto;}
+        #chatbox>#each{background-color: pink; border-radius: 5px;}
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="each"></div>
+    </div>
+    <input type="text" id="input">
+    <script>
+        function scrollToBottom() {
+            var element = document.getElementById("chatbox");
+            element.scrollTop = element.scrollHeight;
+        }
+
+        $("#input").on("keyup",function(e){
+            if(e.keyCode==13){
+                if($("#input").val()!=""){
+                var date = new Date();
+                
+                $("#chatbox").append($("input").val().trim()+"\t"+"<br>");
+                $("#input").val("");
+                scrollToBottom();
+                }else{
+                    alert("그리고 아무도 없었다.");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

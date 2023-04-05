@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>
+            목록
+        </legend>
+        <div id=list></div>
+    </fieldset>
+    <input type="text" placeholder="추가할 단어를 입력하세요." id="addText">
+    <button id="add">추가하기</button> <br>
+    <input type="text" placeholder="삭제할 단어를 입력하세요." id="delText">
+    <button id="del">삭제하기</button>
+    <script>
+
+        var words = [];
+
+        var inputAdd = document.getElementById("addText");
+        var inputDel = document.getElementById("delText");
+        var btnAdd = document.getElementById("add");
+        var btnDel = document.getElementById("del");
+        var listDiv = document.getElementById("list");
+
+        btnAdd.onclick = function () {
+            var word = inputAdd.value;
+
+            word = word.trim();
+            if (word != "") {
+                words.push(word);
+                listDiv.innerHTML = words;
+                inputAdd.value = "";
+            }else{
+                alert("추가할 단어 부터 입력하세요.");
+                inputAdd.focus();
+            }
+        }
+
+        btnDel.onclick = function () {
+            var target = inputDel.value;
+
+            target = target.trim();
+            if(target!=""){
+                var index = words.indexOf(target);
+                if(index == -1){
+                    alert("검색한 단어를 찾을 수 없습니다.");
+                    inputDel.value = "";
+                    return;
+                }
+                words.splice(index, 1);
+                listDiv.innerHTML = words;
+                inputDel.value = "";
+            }else{
+                alert("삭제할 단어 부터 입력하세요.");
+                inputAdd.focus();
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

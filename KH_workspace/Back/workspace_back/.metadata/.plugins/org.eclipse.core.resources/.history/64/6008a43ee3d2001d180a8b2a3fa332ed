@@ -1,0 +1,31 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+public class ContactsDAO {
+
+	private Connection getConnection() throws Exception{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String dbid = "kh";
+		String dbpw = "kh";
+		Connection con = DriverManager.getConnection(url, dbid, dbpw);
+		return con;
+	}
+	
+	public int insert(String name, String contact) throws Exception {
+		String sql = "insert into contacts values(messages_seq.nextval,?,?)";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			ppst.setString(1, name);
+			ppst.setString(2, contact);
+			int result = ppst.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
+
+}

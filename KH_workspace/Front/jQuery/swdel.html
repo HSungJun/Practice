@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table>tr * {
+            word-wrap: break-word;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Input Controls</legend>
+        <input type="text" placeholder="제목 입력" id="title"><br>
+        <input type="text" placeholder="내용 입력" id="contents"><br>
+        <input type="text" placeholder="작성자 입력" id="writer">
+        <button id="btn">추가하기</button><br>
+        <input type="text" placeholder="삭제 할 대상 제목" id="delTitle">
+        <button id="delete">삭제하기</button>
+    </fieldset>
+    <hr>
+    <table id="table" border="1">
+        <tr>
+            <th>제목</th>
+            <th>내용</th>
+            <th>작성자</th>
+            <!-- <th>삭제</th> -->
+        </tr>
+    </table>
+    <script>
+
+        // $("#table").on("click",".delete",function(){
+        //     $(this).parent().parent().remove();
+        // })
+
+        $("#btn").on("click", function () {
+            let title = $("#title").val();
+            let contents = $("#contents").val();
+            let writer = $("#writer").val();
+            if (!(title.trim() == "" || contents.trim() == "" || writer.trim() == "")) {
+                let table = $("table");
+                let row = $("<tr>");
+                $("#delete").on("click", function () {
+                    let delTitle = $("#delTitle").val();
+                    if (title == delTitle) {
+                        row.remove();
+                    }
+                })
+                let col1 = $("<td>");
+                col1.append(title);
+                let col2 = $("<td>");
+                col2.append(contents);
+                let col3 = $("<td>");
+                col3.append(writer);
+                // let col4 = $("<td>");
+                // let btnDelete = $("<button class='delete'>");
+                // btnDelete.html("X");
+                // col4.append(btnDelete);
+                row.append(col1, col2, col3);
+
+                $("#title,#contents,#writer").val("");
+                table.append(row);
+            }
+        })
+
+
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,54 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.MessagesDTO;
+
+public class ContactsDAO {
+
+	private Connection getConnection() throws Exception{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String dbid = "kh";
+		String dbpw = "kh";
+		Connection con = DriverManager.getConnection(url, dbid, dbpw);
+		return con;
+	}
+	
+	public int insert(String name, String contact) throws Exception {
+		String sql = "insert into contacts values(messages_seq.nextval,?,?)";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			ppst.setString(1, name);
+			ppst.setString(2, contact);
+			int result = ppst.executeUpdate();
+			con.commit();
+			return result;
+		}
+	}
+	
+	public List<ContactsDTO> selectAll() throws Exception{
+		String sql = "select * from messages";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);
+				ResultSet rs = ppst.executeQuery();){ 
+			//ResultSet은 활성화 중에만 사용 가능. 닫히기 전에 List에 담아 사용함.
+			List<ContactsDTO> result = new ArrayList();
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String writer = rs.getString("writer");
+				String message = rs.getString("message");
+				ContactsDTO dto = new ContactsDTO(id,writer,message);
+				result.add(dto); 
+			}
+			return result;
+
+		}
+	}
+
+}

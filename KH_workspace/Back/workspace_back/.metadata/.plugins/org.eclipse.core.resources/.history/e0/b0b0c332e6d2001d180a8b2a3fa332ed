@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Contacts</title>
+</head>
+<body>
+	<table border='1'>
+		<tr>
+			<td colspan='2' align='center'>Contacts</td>
+		</tr>
+		<tr>
+			<td> <button href='insert_contact'>Add Contact</button> </td>
+			<td> <button href='selectAll'>Contact List</button> </td>
+		</tr>
+		
+	</table>
+</body>
+</html>

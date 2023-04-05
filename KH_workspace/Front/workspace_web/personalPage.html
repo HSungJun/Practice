@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+  <style>
+    .container {
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 800px;
+      
+    }
+
+    body {
+      background-image: linear-gradient(to top, white 80%, pink);
+    }
+
+    /*head*/
+    #head {
+      text-align: center;
+      line-height: 100px;
+    }
+
+    #logo {
+      color: white;
+      font-size: 30px;
+    }
+
+    #logo:hover {
+      transform: scale(1.2);
+    }
+
+    #outbutton {
+      width: 70px;
+      height: 35px;
+    }
+
+    #outbutton:hover {
+      transform: scale(1.05);
+    }
+
+    #offcanvasWithBothOptions {
+      text-align: left;
+    }
+
+    #offcanvasWithBothOptionsLabel {
+      font-size: 40px;
+    }
+
+    #offcanvasWithBothOptions {
+      background-color: white;
+      font-size: 12px;
+    }
+
+    form {
+      line-height: 20px;
+    }
+
+    /*body*/
+
+    .black {
+      text-align: center;
+      font-size: 60px;
+      color: white;
+      line-height: 80px;
+      position: absolute;
+      transition-duration: 1s;
+      opacity: 0%;
+      width: 100%;
+      height: 450px;
+      background-color: rgba(0, 0, 0);
+    }
+
+    .black:hover {
+      opacity: 50%;
+      cursor: pointer;
+    }
+
+    #KEYCAPS {
+      border: 2px solid black;
+      background-color: pink;
+      border-radius: 5px;
+    }
+
+    #SWITCHES {
+      border: 2px solid black;
+      background-color: pink;
+      border-radius: 5px;
+    }
+
+    /*low*/
+
+
+    /*bottom*/
+
+    /*end*/
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row head " id="head">
+      <div class="col-md-2 col-9" id="logo">
+        <a href="https://swagkeys.com/">
+          <img src="/totalimg/foot.png">
+        </a>
+      </div>
+      <div class="d-none d-sm-none d-md-block col-md-8" id="main">
+        <img src="/totalimg/main2.png">
+      </div>
+      <div class="col-md-2 col-3" id="search">
+        <button class="btn bg-white" type="button" data-bs-toggle="offcanvas" id="outbutton"
+          data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Login</button>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+          aria-labelledby="offcanvasWithBothOptionsLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Login</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <p>
+            <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text"></div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+              </div>
+              <div class="mb-3 form-check" id="rememberMe">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+              </div>
+              <button type="submit" class="text-white btn bg-dark">Submit</button>
+            </form>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row body" id="body">
+      <div class="col-12" id="bodymain">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/totalimg/22222.png" class="d-block w-100" id="img1">
+            </div>
+            <div class="carousel-item">
+              <img src="/totalimg/2222.png" class="d-block w-100" id="img2">
+            </div>
+            <div class="carousel-item">
+              <img src="/totalimg/frog.png" class="d-block w-100" id="img3">
+            </div>
+            <div class="black"> You Can Do It Like This! </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <br>
+
+    <a href="https://swagkeys.com/collections/keycaps">
+      <button type="button" class="btn btn-outline-dark" id="KEYCAPS">KEYCAPS</button>
+    </a>
+    <br>
+    <br>
+
+    <div class="row low" id="low">
+      <div class="col-sm-4 col-6" id="low1">
+        <div class="card">
+          <img src="/totalimg/low1.png" class="card-img-top w-100">
+          <div class="card-body">
+            <p class="card-text">
+              [INSTOCK] JTK NIGHT SAKURA <br> $55.00 USD
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-6" id="low2">
+        <div class="card">
+          <img src="/totalimg/low2.png" class="card-img-top w-100">
+          <div class="card-body">
+            <p class="card-text">
+              JTK AZURE (EXTRAS) <br><br> $119.00 USD
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-6" id="low3">
+        <div class="card">
+          <img src="/totalimg/low3.png" class="w-100 card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              [IN-STOCK] GMK HANDARBEIT <br> $169.00 USD
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <br>
+
+    <a href="https://swagkeys.com/collections/switches">
+      <button type="button" class="btn btn-outline-dark" id="SWITCHES">SWITCHES</button>
+    </a>
+
+    <br>
+    <br>
+
+    <div class="row bot" id="bot">
+      <div class="col-sm-4 col-6" id="low1">
+        <div class="card">
+          <img src="/totalimg/bot1.png" class="card-img-top w-100">
+          <div class="card-body">
+            <p class="card-text">
+              GAZZEW BOBAGUM LINEAR SILENT SWITCHES <br> $6.50 USD
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-6" id="low2">
+        <div class="card">
+          <img src="/totalimg/bot2.png" class="card-img-top w-100">
+          <div class="card-body">
+            <p class="card-text">
+              THIC THOCK MARSHMALLOW SWITCH <br> $6.50 USD
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 col-6" id="low3">
+        <div class="card">
+          <img src="/totalimg/bot3.png" class="w-100 card-img-top">
+          <div class="card-body">
+            <p class="card-text">
+              GATERON X SW PURE BERRY LINEAR SWITCH(10PCS) <br> $4.50 USD
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <div class="row end" id="end">
+      <p class="text-start fs-6 position-absolute bottom-0 end-0 text-light bg-dark">
+        maker - Sungjun Hong <br>
+        tel - 010-4847-5825 <br>
+        E-mail - sungjun960@gmail.com <br>
+
+
+      </p>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

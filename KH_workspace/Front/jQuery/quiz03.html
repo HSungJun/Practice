@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+    <p id="p1">P1</p>
+    <p id="p2">P2</p>
+    <p id="p3">P3</p>
+    <p id="p4">P4</p>
+    <br><br>
+    <input type="text" id="number" placeholder="행번호">
+    <input type="text" id="color" placeholder="배경색">
+    <br><br>
+    <button id="btn">바꾸기</button>
+        <script>
+            $("#btn").on("click",function(){
+                $("#p"+$("#number").val()).css({
+                    "background-color":$("#color").val(),
+                });
+                $("#number").val("");
+                $("#color").val("")
+            });
+        </script>
+</body>
+</html>

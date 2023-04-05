@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+    <script>
+        let str = `안녕하세요~ 저는 Jane 입니다. 
+        급한 용무라면 010-4321-1234 or 010-1144-9988로 연락주세요`;
+
+        let regex =  /01\d-\d{4}-\d{4}/g;
+        
+        // let result = regex.exec(str);
+        // for(let i=1; i<result.length; i++){
+        //     console.log(result);
+        // }
+        
+        let result = null;
+        while((result = regex.exec(str))!= null){
+                console.log(result);
+        }
+        
+        
+
+    
+        // let regex = /(01\d-\d{4}-\d{4}) or (01\d-\d{4}-\d{4})/;
+        // let result = regex.exec(str);
+        // //그룹으로 묶을시 배열의 0번요소가 $&와 같음. 1번요소는 $1 캡쳐번수와 동일. 
+        // console.log(result);
+
+        // console.log("$&: " +result[0]);
+        // console.log("$1: " +result[1]);
+        // console.log("$1 - " +RegExp.$1);
+        
+        // console.log("$2: " +result[2]);
+        // console.log("$2 - " +RegExp.$2);
+        
+        // console.log("$&: " +RegExp.lastMatch);//$& 는 RegExp.lastMatch 
+        
+        // let regex = /01\d-\d{4}-\d{4}/g;
+        // let result1 = regex.exec(str);
+        // console.log(result1);
+
+        // let result2 = regex.exec(str);
+        // console.log(result2);
+        // //global 옵션이 있을경우 exec가 한번 실행되고 앞의 부분을 찾은 후에 커서를 
+        // //그자리에 대기 이후 다음 exec를 실행할 떄에는 다음 매칭값을 찾기때문에 
+        // //result1, 2 의 값이 다르다.
+
+        // let result3 = regex.exec(str);
+        // console.log(result3);
+        // //이후 찾을 매칭값이 없기때문에 null값이 반환된다. 
+
+        // let result4 = regex.exec(str);
+        // console.log(result4);
+        // //다시 처음부터 실행되기 때문에 처음부터 검색을 실행해 매칭값을 찾아
+        // //result1 과 같은 값이 나온다
+    </script>
+</body>
+</html>

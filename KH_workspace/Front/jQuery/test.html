@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    
+</head>
+<body>
+    <button class="pop">pop1</button>
+    <button class="pop">pop2</button>
+    <button class="pop">pop3</button>
+    <button class="pop">pop4</button>
+    <button class="pop">pop5</button>
+
+    <script>
+        $(".pop").on("click",function(){
+            // console.log(this.innerHTML); //this는 jquery 문법이 아님. javascript문법요소
+        console.log(this);
+        console.log($(this));// 둘은 명백히 다름
+        })
+
+        // $(this) javascript문법을 jquery문법으로 변경
+
+        // jQuery 인스턴스 = 노드
+
+        $(".pop") //배열
+        console.log($(".pop")[0]); // javascript instance로 나옴 > jquery 기능 불가능. 
+    </script>
+</body>
+</html>
