@@ -1,0 +1,10 @@
+
+public class Main {
+	public static void main(String[] args) {
+		DAO dto = new DAO();
+		
+		System.out.println(dto.searchUser("1"));
+		
+		
+	}
+}
