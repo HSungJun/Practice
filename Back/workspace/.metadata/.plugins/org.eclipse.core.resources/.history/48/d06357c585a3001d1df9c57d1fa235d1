@@ -1,7 +1,0 @@
-package Exam01;
-
-public class Manager {
-	private Movie[] movie = new Movie[100];
-	
-
-}

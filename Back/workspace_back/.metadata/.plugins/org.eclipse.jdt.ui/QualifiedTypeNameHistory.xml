@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.graalvm.compiler.asm.amd64.AMD64VectorAssembler.VexMaskMoveOp"/>
-    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
-    <fullyQualifiedTypeName name="dao.MessagesDAO"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Executable"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
-</qualifiedTypeNameHistroy>

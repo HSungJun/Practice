@@ -1,7 +1,0 @@
-package Exam02;
-
-public class Manager {
-	private CafeMenu[] cafe = new CafeMenu[100];
-	
-	
-}
