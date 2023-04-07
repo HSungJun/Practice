@@ -91,7 +91,7 @@ public class MessagesDAO {
 
 
 	public List<MessagesDTO> selectAll() throws Exception{
-		String sql = "select * from messages";
+		String sql = "select * from messages order by 1";
 		try (Connection con = this.getConnection();
 				PreparedStatement ppst = con.prepareStatement(sql);
 				ResultSet rs = ppst.executeQuery();){ 

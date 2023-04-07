@@ -25,10 +25,12 @@ public class insertMsg extends HttpServlet {
 			MessagesDAO dao = MessagesDAO.getInstance();	
 			int result = dao.insert(writer, msg);
 			
+			response.sendRedirect("index.html");
+			
 			//페이지를 jsp로 전환하여 실행해야함
 //			response.sendRedirect("");
 			// ---- 연결을 종료하고 페이지를 전환해야함 > response.sendRedirect 는 데잍터를 가져갈 수 없음.
-			request.getRequestDispatcher("insertView.jsp").forward(request, response);
+//			request.getRequestDispatcher("insertView.jsp").forward(request, response);
 			//forward - 페이지 전환.(데이터를 저장하고 페이지 전환.) > MVC2 로 전환하기 위해 프론트 페이지는 jsp에 작성.
 			//보낼 데이터가 있는 경우 forward / 데이터가 없음 sendRedirect 로 페이지 전환
 

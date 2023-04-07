@@ -20,31 +20,32 @@ public class insert extends HttpServlet {
 		request.setCharacterEncoding("utf8");
 		String name = request.getParameter("name");
 		String contact = request.getParameter("contact");
-		
+		         
 		try{
 		ContactsDAO dao = ContactsDAO.getInstance();
 
 		int result = dao.insert(name, contact);
 		
+		response.sendRedirect("index.html");
 		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		//			response.sendRedirect("succes.html"); 다른페이지로 이동할때 사용하는 명령
 		PrintWriter resp = response.getWriter();
-		resp.append("<html>");
-		resp.append("<head>");
-		resp.append("</head>");
-		resp.append("<body>");
-		resp.append("<button id='toIndex'>");
-		resp.append("to Index..");
-		resp.append("</button>");
-		resp.append("<script>");
-		resp.append("alert('Insert complete');");
-		resp.append("document.getElementById('toIndex').onclick = function(){location.href='index.html'}");
-		resp.append("</script>");
-		resp.append("</body>");
-		resp.append("</html>");
+//		resp.append("<html>");
+//		resp.append("<head>");
+//		resp.append("</head>");
+//		resp.append("<body>");
+//		resp.append("<button id='toIndex'>");
+//		resp.append("to Index..");
+//		resp.append("</button>");
+//		resp.append("<script>");
+//		resp.append("alert('Insert complete');");
+//		resp.append("document.getElementById('toIndex').onclick = function(){location.href='index.html'}");
+//		resp.append("</script>");
+//		resp.append("</body>");
+//		resp.append("</html>");
 
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

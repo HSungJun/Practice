@@ -52,7 +52,7 @@ public class ContactsDAO {
 	}
 	
 	public List<ContactsDTO> selectAll() throws Exception{
-		String sql = "select * from contacts";
+		String sql = "select * from contacts order by 1";
 		try (Connection con = this.getConnection();
 				PreparedStatement ppst = con.prepareStatement(sql);
 				ResultSet rs = ppst.executeQuery();){ 
