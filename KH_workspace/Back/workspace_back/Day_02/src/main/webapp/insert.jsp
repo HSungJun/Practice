@@ -17,4 +17,5 @@
 <!-- jsp > HTML 에서 자바 servlet 으로 컴파일 > 2진수로 컴파일 하여 작동. -->
 <!-- <% %> 가 자바를 사용하고자 하는 부분의 위치 표시 
 	import 하기 위해선 자료형 제일 뒤에 커서에서 ctrl+spacebar
+	JSTL의 foreach문법 <c:forEach> begin="" end="" step="" </c:forEach>
 -->	 

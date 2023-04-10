@@ -25,7 +25,7 @@ public class insertMsg extends HttpServlet {
 			MessagesDAO dao = MessagesDAO.getInstance();	
 			int result = dao.insert(writer, msg);
 			
-			response.sendRedirect("index.html");
+//			response.sendRedirect("index.html");
 			
 			//페이지를 jsp로 전환하여 실행해야함
 //			response.sendRedirect("");

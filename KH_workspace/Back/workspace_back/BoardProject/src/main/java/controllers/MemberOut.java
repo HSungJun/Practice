@@ -6,35 +6,34 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import dao.membersDAO;
 
-/**
- * Servlet implementation class IdCheck
- */
-@WebServlet("/IdCheck")
-public class IdCheck extends HttpServlet {
+@WebServlet("/MemberOut")
+public class MemberOut extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf8");
 		try {
-		String id = request.getParameter("id");
-		System.out.println("입력 id = "+id);
 		
 		membersDAO dao = membersDAO.getInstance();
-		boolean result = dao.isIdExist(id);
+		String id = (String) request.getSession().getAttribute("loginId");
 		
-		request.setAttribute("result", result);
-		
-		request.getRequestDispatcher("/member/isIdExist.jsp").forward(request, response);
-		
-		
-		}catch(Exception e) {
-			e.printStackTrace();
+			boolean result = dao.memberOut(id);
 			
+			if(result) {
+				request.getSession().invalidate();
+				response.sendRedirect("/index.jsp");
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("/erorr.jsp");
 		}
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
