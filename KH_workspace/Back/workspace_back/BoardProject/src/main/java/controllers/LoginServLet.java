@@ -13,6 +13,7 @@ public class LoginServLet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf8");
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		

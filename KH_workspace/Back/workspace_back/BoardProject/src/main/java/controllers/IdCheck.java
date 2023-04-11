@@ -17,6 +17,7 @@ public class IdCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf8");
 		try {
 		String id = request.getParameter("id");
 		System.out.println("입력 id = "+id);

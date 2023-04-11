@@ -103,16 +103,45 @@ public class membersDAO {
 			String mpname = rs.getString("name");
 			String mpphone = rs.getString("phone");
 			String mpemail = rs.getString("email");
+			String mpzipcode = rs.getString("zipcode");
+			String mpadd1 = rs.getString("address1");
+			String mpadd2 = rs.getString("address2");
+			
 			
 			dto.setId(mpid);
 			dto.setName(mpname);
 			dto.setPhone(mpphone);
 			dto.setEmail(mpemail);
+			dto.setZipcode(mpzipcode);
+			dto.setAddress1(mpadd1);
+			dto.setAddress2(mpadd2);
+			
+			
 			}
 			return dto;
 		}
 	}
 
-
+	public boolean update(membersDTO dto) throws Exception {
+		String sql = "update members set name=?, phone=?, email=?, zipcode=?, address1=?, address2=? where id=?";
+		try (Connection con = this.getConnection(); 
+				PreparedStatement ppst = con.prepareStatement(sql);){
+			
+			String id = dto.getId();
+			ppst.setString(1, dto.getName());
+			ppst.setString(2, dto.getPhone());
+			ppst.setString(3, dto.getEmail());
+			ppst.setString(4, dto.getZipcode());
+			ppst.setString(5, dto.getAddress1());
+			ppst.setString(6, dto.getAddress2());
+			ppst.setString(7, id);
+			
+			int result = ppst.executeUpdate();
+			if(result==0) {
+				return false;
+			}else {return true;}
+			
+		}
+	};
 
 }

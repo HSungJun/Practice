@@ -30,7 +30,7 @@
 
 	<c:choose>
 		<c:when test="${loginId==null}">
-			<form action="LoginServLet" method="post">
+			<form action="/Login.members" method="post">
 				<table border="1" align="center">
 					<tr>
 						<th colspan="2">Login Box</th>
@@ -55,12 +55,15 @@
 		<c:otherwise>
 			<table border=1 align=center>
 				<tr>
-					<th colspan=3>${sessionScope.loginId} 님 환영합니다.</th>
+					
+					<th colspan=4>${sessionScope.loginId} 님 환영합니다.</th>
+					
 				</tr>
 				<tr>
-					<td align=center><a href="/MyPage"><button id="myPage">마이페이지</button></a></td>
-					<td align=center><a href="/Logout"><button id="Logout">로그아웃</button></a></td>
-					<td align=center><a href="/MemberOut"><button id="memberOut">회원탈퇴</button></a></td>
+					<td align=center><a href="/ToBoard.members"><button id="toBoard">게시판</button></a></td>
+					<td align=center><a href="/MyPage.members"><button id="myPage">마이페이지</button></a></td>
+					<td align=center><a href="/Logout.members"><button id="Logout">로그아웃</button></a></td>
+					<td align=center><a href="/Out.members"><button id="memberOut">회원탈퇴</button></a></td>
 				</tr>
 			</table>
 

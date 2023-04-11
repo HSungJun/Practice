@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+
 	<!-- selectMSG 서블릿에서 넘어온 키,밸류값인 "list", result가 넘어옴. EL을 통한 사용 -->
 	<!-- EL : Expression Language - controller가 request에 담아 보낸 데이터를 표현하기 위한 언어  
 	키값으로 한글을 넣을 수 없음 주석 안에서도 \${}또한 인식되기에 \ 를 통해 특수문자기능을 해재하여 \${}의 경우 인식되지 않음. 
@@ -29,7 +29,8 @@
 
 	<br>
 	<hr>
-	JSTL 예시 <br>
+	JSTL 예시
+	<br>
 	<!-- JSTL = JSP Standard Tag Library -->
 	<!-- JSTL 에서는 "" 가 의무사항 -->
 	<!-- if 문 형태 이며 else if 등의 기능은 없음 -->
@@ -82,11 +83,26 @@
 			</tr>
 		</c:forEach>
 
+		<form action='modify.message' method='get'>
+			<tr>
+				<td colspan='3'><input type='text' placeholder='Input id to modify' name='modID'>
+					<input type='text' placeholder='Input writer to modify' name='modWriter'>
+					<input type='text' placeholder='Input message to modify' name='modMessage'>
+					<button type='submit'>Modify</button></td>
+			</tr>
+		</form>
+		<form action='delete.message' method='get'>
+			<tr>
+				<td colspan='3'><input type='text' name='delid' id='text'
+					placeholder='input delete id'>
+					<button>delete</button></td>
+			</tr>
+		</form>
 		<tr>
 			<td colspan='3' align=center><a href="index.html">back</a>
 		</tr>
 	</table>
-	
+
 	<hr>
 
 </body>

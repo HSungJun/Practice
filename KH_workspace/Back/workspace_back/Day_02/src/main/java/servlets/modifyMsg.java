@@ -26,7 +26,7 @@ public class modifyMsg extends HttpServlet {
 
 			dao.modify(modId, modWriter, modMessage);
 			
-			response.sendRedirect("SelectMsg");
+			response.sendRedirect("select.message");
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error.html");

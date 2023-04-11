@@ -20,7 +20,7 @@ public class deleteMsg extends HttpServlet {
 		try {
 		MessagesDAO dao = MessagesDAO.getInstance();	
 		dao.delete(delid);
-		response.sendRedirect("SelectMsg");
+		response.sendRedirect("select.message");
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("error.html");

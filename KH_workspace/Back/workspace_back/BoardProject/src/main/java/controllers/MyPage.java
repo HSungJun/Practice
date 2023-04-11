@@ -28,11 +28,17 @@ public class MyPage extends HttpServlet {
 		String getname = mpdto.getName();
 		String getphone = mpdto.getPhone();
 		String getemail = mpdto.getEmail();
+		String getzip = mpdto.getZipcode();
+		String getadd1 = mpdto.getAddress1();
+		String getadd2 = mpdto.getAddress2();
 		
 		request.setAttribute("id", getid);
 		request.setAttribute("name", getname);
 		request.setAttribute("phone", getphone);
 		request.setAttribute("email", getemail);
+		request.setAttribute("zip", getzip);
+		request.setAttribute("add1", getadd1);
+		request.setAttribute("add2", getadd2);
 		
 		request.getRequestDispatcher("/member/list.jsp").forward(request, response);
 		
