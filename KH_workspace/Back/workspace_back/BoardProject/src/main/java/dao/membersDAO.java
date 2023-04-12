@@ -96,7 +96,6 @@ public class membersDAO {
 				PreparedStatement ppst = con.prepareStatement(sql);){
 			ppst.setString(1, id);
 			try(ResultSet rs = ppst.executeQuery()){
-			membersDTO result = new membersDTO();
 			
 			rs.next();
 			String mpid = rs.getString("id");

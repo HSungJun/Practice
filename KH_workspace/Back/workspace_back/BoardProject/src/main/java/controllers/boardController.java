@@ -1,40 +1,109 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class boardController
- */
-@WebServlet("/boardController")
+import dao.boardDAO;
+import dto.boardDTO;
+
+@WebServlet("*.board")
 public class boardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public boardController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("utf8");
+
+		String cmd = request.getRequestURI();
+
+		try {
+			if (cmd.equals("/write.board")) {
+
+				String writer = (String) request.getParameter("writer");
+				String title = (String) request.getParameter("title");
+				String contents = (String) request.getParameter("contents");
+				int view_count = 0;
+
+				System.out.println(writer + " " + title + " " + contents);
+
+				int dao = boardDAO.getInstance().pushContent(writer, title, contents, view_count);
+
+				if (dao != 0) {
+					List<boardDTO> dto = boardDAO.getInstance().select();
+					request.setAttribute("list", dto);
+					request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
+
+				} else {
+					response.sendRedirect("/error.jsp");
+				}
+
+			} else if (cmd.equals("/list.board")) {
+
+				List<boardDTO> dto = boardDAO.getInstance().select();
+				request.setAttribute("list", dto);
+				request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
+
+			} else if (cmd.equals("/contents.board")) {
+
+				int seq = Integer.parseInt(request.getParameter("seq"));
+				System.out.println("선택 글 번호 " + seq);
+
+				boardDTO contentsValue = boardDAO.getInstance().contentsBySeq(seq);
+
+				System.out.println("선택한 글 작성자, 제목, 내용 : " + contentsValue.getWriter() + " / " + contentsValue.getTitle()
+						+ " / " + contentsValue.getContents());
+
+				String loginId = (String) request.getSession().getAttribute("loginId");
+				request.setAttribute("id", loginId);
+				request.setAttribute("dto", contentsValue);
+				request.getRequestDispatcher("/board/contents.jsp").forward(request, response);
+
+			} else if (cmd.equals("/delete.board")) {
+
+				int seq = Integer.parseInt(request.getParameter("seq"));
+				System.out.println("삭제 글 번호 " + seq);
+
+				int result = boardDAO.getInstance().delete(seq);
+				if (result == 1) {
+					List<boardDTO> dto = boardDAO.getInstance().select();
+					request.setAttribute("list", dto);
+					request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
+				
+				} else {
+					response.sendRedirect("/error.jsp");
+				}
+			
+			} else if (cmd.equals("/modify.board")) {
+				int seq = Integer.parseInt(request.getParameter("seq"));
+				System.out.println("수정 글 번호 " + seq);
+				
+				String title = request.getParameter("title");
+				String contents = request.getParameter("contents");
+				
+				System.out.println(seq+" "+title+" "+contents);
+				
+				int result = boardDAO.getInstance().modify(seq, title, contents);
+				
+				List<boardDTO> dto = boardDAO.getInstance().select();
+				request.setAttribute("list", dto);
+				request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
+			
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.sendRedirect("/error.jsp");
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

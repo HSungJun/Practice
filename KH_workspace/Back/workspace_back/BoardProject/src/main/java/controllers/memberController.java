@@ -52,7 +52,9 @@ public class memberController extends HttpServlet {
 				request.setAttribute("result", result);
 
 				request.getRequestDispatcher("/member/isIdExist.jsp").forward(request, response);
-
+				
+				
+				
 			} else if (cmd.equals("/Out.members")) {
 				membersDAO dao = membersDAO.getInstance();
 				String id = (String) request.getSession().getAttribute("loginId");

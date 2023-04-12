@@ -60,7 +60,7 @@
 					
 				</tr>
 				<tr>
-					<td align=center><a href="/ToBoard.members"><button id="toBoard">게시판</button></a></td>
+					<td align=center><a href="/list.board"><button id="toBoard">게시판</button></a></td>
 					<td align=center><a href="/MyPage.members"><button id="myPage">마이페이지</button></a></td>
 					<td align=center><a href="/Logout.members"><button id="Logout">로그아웃</button></a></td>
 					<td align=center><a href="/Out.members"><button id="memberOut">회원탈퇴</button></a></td>
