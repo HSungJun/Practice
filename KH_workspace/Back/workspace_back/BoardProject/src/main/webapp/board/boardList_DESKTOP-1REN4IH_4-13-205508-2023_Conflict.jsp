@@ -14,7 +14,7 @@
 </style>
 </head>
 <body>
-	
+
 	<table border="1" width="1000" height="400">
 		<tr>
 			<th align="center" colspan="5">자유게시판</th>
@@ -51,9 +51,7 @@
 
 
 		<tr>
-			<td colspan="5" align="center">
-			${navi }
-			</td>
+			<td colspan="5" align="center">1 2 3 4 5 6 7 8 9 10</td>
 		</tr>
 
 		<tr>

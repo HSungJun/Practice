@@ -8,11 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
 import dao.boardDAO;
 import dto.boardDTO;
-import statics.Settings;
 
 @WebServlet("*.board")
 public class boardController extends HttpServlet {
@@ -39,33 +37,17 @@ public class boardController extends HttpServlet {
 				if (dao != 0) {
 					List<boardDTO> dto = boardDAO.getInstance().select();
 					request.setAttribute("list", dto);
-					request.getRequestDispatcher("/list.board?cpage=1").forward(request, response);
+					request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
 
 				} else {
 					response.sendRedirect("/error.jsp");
 				}
 
 			} else if (cmd.equals("/list.board")) {
-				
-				
-				int currentPage = Integer.parseInt(request.getParameter("cpage"));
-				request.getSession().setAttribute("currentPage", currentPage);
-				
-				boardDAO dao = boardDAO.getInstance();
-				String pageNavi = dao.getPageNavi(currentPage);
-				
-				
-				//1페이지 일때 1,10 / 2페이지 일 때 11,20 
-				// currentPage *10 = end
-				// currentPage *10 -9 = start
-				
-				int start = currentPage * Settings.BOARD_RECORD_COUNT_PER_PAGE -(Settings.BOARD_RECORD_COUNT_PER_PAGE -1);
-				int end = currentPage * Settings.BOARD_RECORD_COUNT_PER_PAGE;
-				
-				List<boardDTO> dto = boardDAO.getInstance().selectBound(start, end);
+
+				List<boardDTO> dto = boardDAO.getInstance().select();
 				request.setAttribute("list", dto);
-				request.setAttribute("navi", pageNavi);
-				request.getRequestDispatcher("/board/boardList.jsp?cpage=1").forward(request, response);
+				request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
 
 			} else if (cmd.equals("/contents.board")) {
 
@@ -91,7 +73,7 @@ public class boardController extends HttpServlet {
 				if (result == 1) {
 					List<boardDTO> dto = boardDAO.getInstance().select();
 					request.setAttribute("list", dto);
-					request.getRequestDispatcher("/list.board?cpage=1").forward(request, response);
+					request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
 				
 				} else {
 					response.sendRedirect("/error.jsp");
@@ -110,7 +92,7 @@ public class boardController extends HttpServlet {
 				
 				List<boardDTO> dto = boardDAO.getInstance().select();
 				request.setAttribute("list", dto);
-				request.getRequestDispatcher("/contents.board?seq="+seq).forward(request, response);
+				request.getRequestDispatcher("/board/boardList.jsp").forward(request, response);
 			
 			}
 

@@ -53,7 +53,7 @@
 </form>
 	<script>
 		$("#toList").on("click", function() {
-			location.href = "/list.board?cpage=${sessionScope.currentPage}";
+			location.href = "/list.board";
 		})
 		
 		$("#delete").on("click",function(){
