@@ -1,0 +1,47 @@
+git - cmd로 실행 설치.
+
+cd - 이동 명령어
+cd\ 최상위 폴더로 이동
+cd.. 상위 폴더로 이동 
+dir 폴더검색 (directiory)
+mkdir 폴더 생성
+git init - (텅 비어있는) 깃 저장소 초기화 (이니셜라이즈) / 저장소를 만들어주는데 선행되지 않으면 저장소에 저장 불가능
+
+ 파일을 로컬 저장소까지 저장되는 과정 
+- 실제 사용하는 폴더 == working tree
+- 로컬 저장소 == Local repository
+
+- Stage(or Index) 임시 중간 저장소
+
+git status - working tree의 현재 상태를 확인하는 명령.
+	추가된 파일 삭제된 파일등에 대한 정보 확인.
+
+git add 파일명 (또는* 전부) - stage(index)에 추가 하여 상태를 확인.
+gir rm --cached 파일명    - stage(index)에서 working tree로 복구할 수 있다.
+git commit -m "코멘트" 파일명 (타임라인에 기록 코멘트를 달아줌)
+
+나에대한 정보 입력해야함
+git config user.name / user.email 작성
+
+add = 중간단계에 파일업로드. commit 은 local repository에 파일 업로드
+
+git log -3 - 갯수만큼 정보 확인
+head -> master 
+head 는 타임라인을 보고 있는 눈
+master 는 타임라인 전체 중 가장 최근
+
+git status 에서 wirking tree가 clean 하다는것은 변화가 없다는 뜻
+
+master = branch
+git checkout <commit ID> 특정 커밋 시점으로 head 변경 (master 입력시 가장 최신으로 )
+
+git restore - "커밋 전에" 삭제후 복원을 위한 명령어
+git restore --source 커밋id값 파일명 > 커밋 후 복원
+
+checkout의 경우 새로운 브랜치를 생성하여 복붙된 부분을 보는 것.
+> 새로운 임시 브랜치에서 실험적인 것을 진행해도 master와는 무관.
+> 임시 브랜치를 사용하고자 할 경우 정규 이름을 부여하면 가능. > git switch -c <새로운 브랜치 이름>
+ 
+git branch > 브랜치의 상태 확인.
+
+git merge 병합할 브랜치명- 병합 
