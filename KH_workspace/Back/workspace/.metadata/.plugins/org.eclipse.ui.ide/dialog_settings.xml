@@ -6,6 +6,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Mini\Desktop\GithubOnly\Hong-s\KH_workspace\Back\workspace_back"/>
+			<item value="C:\Users\Mini\Desktop\GithubOnly\Hong-s\KH_workspace\Back\workspace"/>
 			<item value="C:\Users\user1\Desktop\KH_workspace\Back\workspace_back"/>
 		</list>
 	</section>
@@ -37,5 +39,7 @@
 		</list>
 	</section>
 	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="BasicNewProjectResourceWizard">
 	</section>
 </section>

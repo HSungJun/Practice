@@ -1,0 +1,69 @@
+[33mcommit 5689adbd65412412ea3abba11572f046935c4533[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: dc00534 1f63d59
+Author: Heeeesam <dltkdn97@gmail.com>
+Date:   Mon Apr 17 12:49:45 2023 +0900
+
+    Merge branch 'master' of https://github.com/LJHHKF/GitPractice
+
+[33mcommit dc00534411645d7e9348deede040303722eaadc6[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Heeeesam <dltkdn97@gmail.com>
+Date:   Mon Apr 17 12:40:23 2023 +0900
+
+    LSW#2
+
+[33mcommit 1f63d596aee34790805b8036913d040f39b4fa2d[m[33m ([m[1;31mleader/master[m[33m)[m
+Merge: 18e9697 e26ff04
+Author: JuHwa Lee <43880473+LJHHKF@users.noreply.github.com>
+Date:   Mon Apr 17 12:35:04 2023 +0900
+
+    Merge pull request #4 from gunheelee22/master
+    
+    lkh.jsp added
+
+[33mcommit 18e9697f885aa9893d0be9c64b340c02d0776504[m
+Merge: 34c6c03 b14bf85
+Author: JuHwa Lee <43880473+LJHHKF@users.noreply.github.com>
+Date:   Mon Apr 17 12:34:53 2023 +0900
+
+    Merge pull request #2 from jiseyeong/master
+    
+    JSY.jsp added
+
+[33mcommit 34c6c03e94b74ef53e4c69d70321d7b919de79a9[m
+Merge: becb2c1 8f1b7a4
+Author: JuHwa Lee <43880473+LJHHKF@users.noreply.github.com>
+Date:   Mon Apr 17 12:34:42 2023 +0900
+
+    Merge pull request #1 from HSungJun/master
+    
+    HSJ create
+
+[33mcommit 8f1b7a4c738835671623ec78bbeb39ffce5de7cb[m
+Author: HSJ <sungjun960@gmail.com>
+Date:   Mon Apr 17 11:19:31 2023 +0900
+
+    HSJ create
+
+[33mcommit e26ff04e4bacde5bd7b3352dc72f2d9725ac6d3a[m
+Author: gunheelee22 <sapple90@nate.com>
+Date:   Mon Apr 17 11:18:29 2023 +0900
+
+    lkh.jsp added
+
+[33mcommit b14bf8541ecce83156ca9383c46aaf6d78bb709f[m
+Author: jiseyeong <hanyu3677@naver.com>
+Date:   Mon Apr 17 11:18:27 2023 +0900
+
+    JSY.jsp added
+
+[33mcommit f8c981f2e775e6a34f46c206084d332d718fdf05[m
+Author: Heeeesam <dltkdn97@gmail.com>
+Date:   Mon Apr 17 11:18:21 2023 +0900
+
+    lsw#1
+
+[33mcommit becb2c19b9de2f09467da162cbf992377591944c[m
+Author: LJH <sample@sample.com>
+Date:   Mon Apr 17 10:22:22 2023 +0900
+
+    Project Initialize
