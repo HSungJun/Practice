@@ -8,10 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.websocket.Session;
 
 import dao.boardDAO;
+import dao.replyDAO;
 import dto.boardDTO;
+import dto.replyDTO;
 import statics.Settings;
 
 @WebServlet("*.board")
@@ -80,7 +81,16 @@ public class boardController extends HttpServlet {
 				String loginId = (String) request.getSession().getAttribute("loginId");
 				request.setAttribute("id", loginId);
 				request.setAttribute("dto", contentsValue);
+				
+				replyDAO rdao = replyDAO.getInstance();
+				List<replyDTO> rdto = rdao.listReplyByPa_seq(seq);
+//				System.out.println(rdto.get(0).getParent_seq());
+				
+				request.setAttribute("replyList", rdto);
+				
+				
 				request.getRequestDispatcher("/board/contents.jsp").forward(request, response);
+				
 
 			} else if (cmd.equals("/delete.board")) {
 
