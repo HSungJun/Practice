@@ -224,4 +224,17 @@ public class boardDAO {
 		return sb.toString();
 	}
 
+	public int newFileseq () throws Exception{
+		String sql="select * from board order by seq desc";
+		try (Connection con = this.getConnection();
+				PreparedStatement ppst = con.prepareStatement(sql);
+				ResultSet rs = ppst.executeQuery()) {
+			rs.next();
+			int seq = rs.getInt("seq");
+			
+			return seq;
+		}
+	}
+	
+	
 }

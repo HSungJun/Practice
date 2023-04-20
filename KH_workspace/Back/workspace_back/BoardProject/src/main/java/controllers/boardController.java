@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -9,8 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import dao.FilesDAO;
 import dao.boardDAO;
 import dao.replyDAO;
+import dto.FilesDTO;
 import dto.boardDTO;
 import dto.replyDTO;
 import statics.Settings;
@@ -28,16 +34,40 @@ public class boardController extends HttpServlet {
 		try {
 			if (cmd.equals("/write.board")) {
 
-				String writer = (String) request.getParameter("writer");
-				String title = (String) request.getParameter("title");
-				String contents = (String) request.getParameter("contents");
+				String realPath = request.getServletContext().getRealPath("upload");
+				File realPathFile = new File(realPath);
+				if (!realPathFile.exists()) {
+					realPathFile.mkdir();
+				}
+				MultipartRequest multi = new MultipartRequest(request, realPath, 1024 * 1024 * 10, "utf8",
+						new DefaultFileRenamePolicy());
+				
+				String writer = (String) multi.getParameter("writer");
+				String title = (String) multi.getParameter("title");
+				String contents = (String) multi.getParameter("contents");
 				int view_count = 0;
 
 				System.out.println(writer + " " + title + " " + contents);
 
-				int dao = boardDAO.getInstance().pushContent(writer, title, contents, view_count);
+				int boardPushContent = boardDAO.getInstance().pushContent(writer, title, contents, view_count);
 
-				if (dao != 0) {
+				int contentsSeq = boardDAO.getInstance().newFileseq();
+				
+				String oriName = multi.getOriginalFileName("file");
+
+				// 업로드 되어 RenamePolicy 영향을 받은 후 이름
+				String sysName = multi.getFilesystemName("file");
+				
+				int insertFile = FilesDAO.getInstance().insert(new FilesDTO(0,oriName,sysName,contentsSeq));
+				
+				if(insertFile==0) {
+					System.out.println("파일 저장 실패");
+				}else {
+					System.out.println("파일 저장 완료");
+				}
+				
+				
+				if (boardPushContent != 0 || insertFile != 0) {
 					List<boardDTO> dto = boardDAO.getInstance().select();
 					request.setAttribute("list", dto);
 					request.getRequestDispatcher("/list.board?cpage=1").forward(request, response);

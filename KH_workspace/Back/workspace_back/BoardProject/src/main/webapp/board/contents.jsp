@@ -9,8 +9,10 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <style>
-.seq{display: none};
-
+.seq {
+	display: none
+}
+;
 </style>
 </head>
 <body>
@@ -44,9 +46,10 @@
 			<tr align="right">
 				<td colspan="3"><c:choose>
 						<c:when test="${dto.writer eq id}">
-							<input type="button" value="삭제" id="delete">
-							<input type="button" value="수정" id="modify">
-							<input type="submit" value="수정완료" id="modComplete"	style="display: none">
+							<input type="button" value="삭제" id="delete" seq="${dto.seq }">
+							<input type="button" value="수정" id="modify" seq="${dto.seq }">
+							<input type="submit" value="수정완료" id="modComplete"
+								style="display: none">
 						</c:when>
 					</c:choose> <input type="button" value="목록으로" id="toList"></td>
 			</tr>
@@ -58,7 +61,7 @@
 	<hr>
 	<!-- 댓글 작성란 -->
 	<form action="write.reply" method="post">
-		<table border="1" width="500">
+		<table border="1">
 			<tr>
 				<td colspan="2">작성자 ID : <input type="text" id="re_writer"
 					name="re_writer" value="${sessionScope.loginId}" readonly>
@@ -74,48 +77,52 @@
 		</table>
 	</form>
 
-
+	<hr>
 	<!-- 댓글 목록 -->
 	<c:if test="${replyList!=null}">
-		<form action="update.reply" method="post">
-			<table border="1" width="500">
-				<c:forEach var="i" items="${replyList}">
+		<c:forEach var="i" items="${replyList}">
+			<form action="update.reply" method="post">
+				<table border="1">
 					<tr>
 						<td colspan="2">작성자 ID : <input type="text"
-							value="${i.writer }" readonly></td>
+							class="re_lsit_writer" value="${i.writer }" readonly></td>
 					</tr>
 					<tr>
-						<td><input type="text" value="${i.contents }" size="87%"></td>
-						
+						<td><input type="text" value="${i.contents }" size="87%"
+							class="re_list_contents" name="re_li_contents" readonly></td>
+
 						<td>
-						<c:choose>
-							<c:when test="${sessionScope.loginId eq i.writer}">
-								<button id="re_update">수정</button>
-								<button id="re_delete">삭제</button>
+							<c:choose>
+								<c:when test="${sessionScope.loginId eq i.writer}">
+									<button class="re_list_updbtn" type="button">수정</button>
+									<button class="re_list_delbtn" type="button" re_seq="${i.seq }" re_pa_seq="${dto.seq }">삭제</button>
+									<input type="submit" value="수정완료" class="re_list_updCompBtn"
+										style="display: none">
 
-								<input type="button" value="수정완료" id="re_updateComp"
-									style="display: none">
+									<input type="text" class="seq" id="re_pa_seq" name="re_pa_seq"
+										value="${dto.seq }">
+									<input type="text" class="seq" id="re_seq" name="re_seq"
+										value="${i.seq }">
 
-								<input type="text" class="seq" id="re_seq" name="re_seq" value="${i.seq }">
-
-							</c:when>
-						</c:choose>
+								</c:when>
+							</c:choose>
 						</td>
 					</tr>
-				</c:forEach>
-			</table>
-		</form>
+				</table>
+			</form>
+			<br>
+		</c:forEach>
 	</c:if>
 
 
 	<script>
 		$("#toList").on("click", function() {
-			location.href = "/list.board?cpage=${sessionScope.currentPage}";
+			location.href = "/list.board?cpage="+${sessionScope.currentPage};
 		})
 
 		$("#delete").on("click", function() {
 			if (confirm("게시글을 정말로 삭제하시겠습니까?")) {
-				location.href = "/delete.board";
+				location.href = "/delete.board?seq="+$(this).attr("seq");
 			} else {
 				return false;
 			}
@@ -129,24 +136,23 @@
 			$("#title,#contents").removeAttr("readonly");
 		})
 
-		$("#re_update").on("click", function() {
-			$("#re_updateComp").css('display', 'block');
-			$("#re_contents").removeAttr("readonly");
+		$(".re_list_updbtn").on("click", function() {
+			$(this).next().next().css('display', 'block');
+			$(this).next().css("display", "none");
+			$(this).css("display", "none");
+			$(this).parent().prev().children().removeAttr("readonly");
 		})
 
-		$("#re_delete").on("click", function() {
+		$(".re_list_delbtn").on("click", function() {
 			if (confirm("댓글을 정말로 삭제하시겠습니까?")) {
-				location.href = "/delete.reply";
+				console.log($(this).attr("re_seq"));
+				location.href = "/delete.reply?re_seq="+$(this).attr("re_seq")+"&re_pa_seq="+$(this).attr("re_pa_seq");
 			} else {
 				return false;
 			}
 		})
 
-		$("#re_update").on("click", function() {
-			$("#re_delete").css("display", "none");
-			$("#re_update").css("display", "none");
-			$("#re_updateComp").css("display", "block");
-		})
+		
 	</script>
 </body>
 </html>

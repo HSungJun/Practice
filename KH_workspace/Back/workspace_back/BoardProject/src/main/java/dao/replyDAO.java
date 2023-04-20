@@ -50,7 +50,7 @@ public class replyDAO {
 		String sql = "select * from reply where parent_seq = ?";
 		try (Connection con = this.getConnection(); PreparedStatement ppst = con.prepareStatement(sql);) {
 			ppst.setInt(1, pa_seq);
-			
+
 			try (ResultSet rs = ppst.executeQuery();) {
 				List<replyDTO> result = new ArrayList<>();
 				while (rs.next()) {
@@ -60,12 +60,35 @@ public class replyDAO {
 					Timestamp write_date = rs.getTimestamp("write_date");
 					int parent_seq = rs.getInt("parent_seq");
 
-					replyDTO dto = new replyDTO(seq,writer,contents,write_date,parent_seq);
+					replyDTO dto = new replyDTO(seq, writer, contents, write_date, parent_seq);
 					result.add(dto);
 				}
-					return result;
+				return result;
 			}
 		}
 	}
 
+	public int updateReply(String re_li_contents, int re_li_seq) throws Exception {
+			String sql = "update reply set contents = ? where seq = ?";
+			try (Connection con = this.getConnection(); PreparedStatement ppst = con.prepareStatement(sql);) {
+				ppst.setString(1, re_li_contents);
+				ppst.setInt(2, re_li_seq);
+				
+				int result = ppst.executeUpdate();
+	
+				return result;
+			}
+	}
+	
+	
+	public int deleteReply(int re_seq) throws Exception {
+		String sql = "delete from reply where seq = ?";
+		try (Connection con = this.getConnection(); PreparedStatement ppst = con.prepareStatement(sql);) {
+			ppst.setInt(1, re_seq);
+			int result = ppst.executeUpdate();
+			return result;
+		}
+	}
+	
+	
 }
