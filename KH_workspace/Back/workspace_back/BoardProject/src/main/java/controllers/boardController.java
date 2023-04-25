@@ -102,6 +102,8 @@ public class boardController extends HttpServlet {
 
 				int seq = Integer.parseInt(request.getParameter("seq"));
 				System.out.println("선택 글 번호 " + seq);
+				
+				FilesDTO fdto = FilesDAO.getInstance().selectByParent_seq(seq);
 
 				boardDTO contentsValue = boardDAO.getInstance().contentsBySeq(seq);
 
@@ -111,6 +113,7 @@ public class boardController extends HttpServlet {
 				String loginId = (String) request.getSession().getAttribute("loginId");
 				request.setAttribute("id", loginId);
 				request.setAttribute("dto", contentsValue);
+				request.setAttribute("files", fdto);
 				
 				replyDAO rdao = replyDAO.getInstance();
 				List<replyDTO> rdto = rdao.listReplyByPa_seq(seq);
@@ -146,7 +149,7 @@ public class boardController extends HttpServlet {
 				
 				System.out.println(seq+" "+title+" "+contents);
 				
-				int result = boardDAO.getInstance().modify(seq, title, contents);
+				boardDAO.getInstance().modify(seq, title, contents);
 				
 				List<boardDTO> dto = boardDAO.getInstance().select();
 				request.setAttribute("list", dto);

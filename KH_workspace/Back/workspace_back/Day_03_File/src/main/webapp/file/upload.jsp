@@ -18,7 +18,12 @@
 				<td align=center><input type=text name=message placeholder="메세지 입력"></td>
 			</tr>
 			<tr>
-				<td><input type=file name=file></td>
+				<td>
+				<input type=file name=file1 ><br>
+				<input type=file name=file2 ><br>
+				<input type=file name=file3 ><br>
+				
+				</td>
 			</tr>
 			<tr>
 				<td align=center><button>Upload</button>

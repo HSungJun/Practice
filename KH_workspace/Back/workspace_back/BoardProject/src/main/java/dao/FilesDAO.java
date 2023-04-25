@@ -43,7 +43,7 @@ public class FilesDAO {
 			con.commit();
 			return result;
 		}
-	}
+	};
 
 	public List<FilesDTO> select() throws Exception {
 		String sql = "select * from files order by 1";
@@ -57,12 +57,40 @@ public class FilesDAO {
 				String oriName = rs.getString("oriname");
 				String sysName = rs.getString("sysname");
 				int parent_seq = rs.getInt("parent_seq");
-				
-				FilesDTO dto = new FilesDTO(seq,oriName,sysName,parent_seq);
+
+				FilesDTO dto = new FilesDTO(seq, oriName, sysName, parent_seq);
 				result.add(dto);
 			}
 			return result;
 		}
 	};
+
+	public FilesDTO selectByParent_seq(int seq) throws Exception {
+		String sql = "select * from files where parent_seq = ?";
+		try (Connection con = this.getConnection(); PreparedStatement ppst = con.prepareStatement(sql);) {
+			ppst.setInt(1, seq);
+			try (ResultSet rs = ppst.executeQuery();) {
+				if (rs.next()) {
+					int fseq = rs.getInt("seq");
+					String fOriName = rs.getString("oriname");
+					String fSysName = rs.getString("sysname");
+					int fParent_seq = rs.getInt("parent_seq");
+
+					FilesDTO dto = new FilesDTO(fseq,fOriName,fSysName,fParent_seq);
+
+					return dto;
+				}
+				return null;
+			}
+		}
+	}
+	
+	
 	
 }
+	
+
+
+
+
+

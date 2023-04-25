@@ -44,7 +44,11 @@
 			</tr>
 
 			<tr align="right">
-				<td colspan="3"><c:choose>
+
+				<td align="left">첨부파일 : <a
+					href="/download.file?sysName=${files.sysName }&oriName=${files.oriName}">${files.oriName }</a></td>
+
+				<td colspan="2"><c:choose>
 						<c:when test="${dto.writer eq id}">
 							<input type="button" value="삭제" id="delete" seq="${dto.seq }">
 							<input type="button" value="수정" id="modify" seq="${dto.seq }">
@@ -53,7 +57,6 @@
 						</c:when>
 					</c:choose> <input type="button" value="목록으로" id="toList"></td>
 			</tr>
-
 		</table>
 	</form>
 
@@ -91,11 +94,11 @@
 						<td><input type="text" value="${i.contents }" size="87%"
 							class="re_list_contents" name="re_li_contents" readonly></td>
 
-						<td>
-							<c:choose>
+						<td><c:choose>
 								<c:when test="${sessionScope.loginId eq i.writer}">
 									<button class="re_list_updbtn" type="button">수정</button>
-									<button class="re_list_delbtn" type="button" re_seq="${i.seq }" re_pa_seq="${dto.seq }">삭제</button>
+									<button class="re_list_delbtn" type="button" re_seq="${i.seq }"
+										re_pa_seq="${dto.seq }">삭제</button>
 									<input type="submit" value="수정완료" class="re_list_updCompBtn"
 										style="display: none">
 
@@ -105,8 +108,7 @@
 										value="${i.seq }">
 
 								</c:when>
-							</c:choose>
-						</td>
+							</c:choose></td>
 					</tr>
 				</table>
 			</form>
@@ -117,12 +119,16 @@
 
 	<script>
 		$("#toList").on("click", function() {
-			location.href = "/list.board?cpage="+${sessionScope.currentPage};
+			location.href = "/list.board?cpage=" + $
+			{
+				sessionScope.currentPage
+			}
+			;
 		})
 
 		$("#delete").on("click", function() {
 			if (confirm("게시글을 정말로 삭제하시겠습니까?")) {
-				location.href = "/delete.board?seq="+$(this).attr("seq");
+				location.href = "/delete.board?seq=" + $(this).attr("seq");
 			} else {
 				return false;
 			}
@@ -143,16 +149,14 @@
 			$(this).parent().prev().children().removeAttr("readonly");
 		})
 
-		$(".re_list_delbtn").on("click", function() {
-			if (confirm("댓글을 정말로 삭제하시겠습니까?")) {
-				console.log($(this).attr("re_seq"));
-				location.href = "/delete.reply?re_seq="+$(this).attr("re_seq")+"&re_pa_seq="+$(this).attr("re_pa_seq");
-			} else {
-				return false;
-			}
-		})
-
-		
+		$(".re_list_delbtn").on("click",function() {
+					if (confirm("댓글을 정말로 삭제하시겠습니까?")) {
+						console.log($(this).attr("re_seq"));
+						location.href = "/delete.reply?re_seq=" + $(this).attr("re_seq") + "&re_pa_seq="+ $(this).attr("re_pa_seq");
+					} else {
+						return false;
+					}
+				})
 	</script>
 </body>
 </html>

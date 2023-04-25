@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -54,17 +55,30 @@ public class FileController extends HttpServlet {
 				System.out.println("전송된 메세지 : " + message);
 				// seq
 
+				//while문 사용
+				Enumeration<String> names = multi.getFileNames();
+				
+				while(names.hasMoreElements()) {
+					String fileName = names.nextElement();
+				
+					if (multi.getFile(fileName) != null) {
+						
+					
+					
 				// 업로드 시 원본의 이름 (입력 form의 name 속성)
-				String oriName = multi.getOriginalFileName("file");
-
+				String oriName = multi.getOriginalFileName(fileName);
 				// 업로드 되어 RenamePolicy 영향을 받은 후 이름
-				String sysName = multi.getFilesystemName("file");
+				String sysName = multi.getFilesystemName(fileName);
 				// 두가지 정보를 모두 저장해 놓아야 이후 사용자가 재 다운로드를 받을 때에 다른 이름으로 변경되어 다운받지 않도록 하기 위해서.
-
 				// parent_seq = n번 글에 담긴 파일이다.
-
 				dao.insert(new FilesDTO(0, oriName, sysName, 0));
+					}
 
+				}
+				
+				
+				
+				
 				response.sendRedirect("/");
 
 			}else if (cmd.equals("/list.file")) {

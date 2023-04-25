@@ -156,12 +156,34 @@ button:hover {
 		});
 
 		//id 중복확인버튼 alert
-		$("#idoverlap").on(
-				"click",
-				function() {
-					window.open("/IdCheck?id=" + $("#id").val(), "",
-							"width = 500, height = 300")
-				});
+	//	$("#idoverlap").on(
+	//			"click",
+	//			function() {
+	//				window.open("/IdCheck.members?id=" + $("#id").val(), "",
+	//						"width = 500, height = 300")
+	//			});
+		
+		$("#idoverlap").on("click",function(){
+			$.ajax({
+				url : "/IdCheck.ajax",
+				type : "post",
+				data : {
+					id : $("#id").val()
+				},
+				datatype : "json"
+			}).done(function(resp){
+				if(!resp){
+					if(confirm("사용가능ID, 사용하시겠습니까?")){
+						idValidFlag= true;
+					}else{
+						$("#id").val("")
+					}
+				}else {
+					alert("이미 사용중인 ID. 다시 입력해주세요.")
+					$("#id").val("")
+				}
+			})
+		})
 
 		//회원가입 입력조건 popup
 		$("#list").on("click", function() {

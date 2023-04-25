@@ -1,10 +1,13 @@
 package controllers;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -68,11 +71,49 @@ public class FileController extends HttpServlet {
 				response.sendRedirect("/");
 
 			}else if (cmd.equals("/list.file")) {
-				 List<FilesDTO> dto = dao.getInstance().select();
-				 
-				 request.setAttribute("list", dto);
-				 request.getRequestDispatcher("/file/fileList.jsp").forward(request, response);
-				 
+				List<FilesDTO> dto = dao.getInstance().select();
+
+				request.setAttribute("list", dto);
+				request.getRequestDispatcher("/file/fileList.jsp").forward(request, response);
+
+			}else if (cmd.equals("/download.file")) {
+
+				//한글이름 등은 깨지는 경우가 존재. > 인코딩해주어야함
+				String oriName = request.getParameter("oriName");
+				
+				//chrome의 경우 이런식으로 인코딩.
+				oriName = new String(oriName.getBytes("utf8"),"ISO-8859-1");
+				
+				
+				response.reset();
+				//브라우저에 출력하는것이아닌 client에게 렌더링이아닌 다운로드 받을 수 있도록 설정해줌
+				response.setHeader("Content-Disposition", "attachment;filename="+oriName);
+				//Contents-Disposition 설정값을 attachment(첨부파일)로 바꾸고 다운로드되는 파일이름을 바꾸어준다.
+				
+				
+				//서버에서 파일을 올려 client에게 다운로드 받을 수 있도록 전송해야함.
+				String uploadPath = request.getServletContext().getRealPath("upload");
+				String sysName = request.getParameter("sysName");
+
+				//파일 객체 생성
+				File target = new File(uploadPath+"/"+sysName);
+				
+				//client에게 파일을 전송해주어야함.
+				try(
+						ServletOutputStream sos = response.getOutputStream();
+						//파일업로드를 위해 리얼패스 위치와 파일 이름을 입력
+						FileInputStream fis = new FileInputStream(target);
+						DataInputStream dis = new DataInputStream(fis);
+
+						){
+					//파일 사이즈 만큼의 byte 배열을 만들어줌
+					byte[] fileContents = new byte[(int)target.length()];
+					dis.readFully(fileContents);
+					sos.write(fileContents);
+					sos.flush();
+				}
+
+
 			}
 
 		} catch (Exception e) {

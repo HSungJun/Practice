@@ -18,8 +18,8 @@
 		<tr>
 			<td align=center width="200">seq</td>
 			<td align=center width="200">oriName</td>
-			<td align=center width="200">sysName</td>
 			<td align=center width="200">parent_seq</td>
+
 		</tr>
 		
 		<c:choose>
@@ -27,8 +27,8 @@
 				<c:forEach var="i" items="${list}">
 					<tr>
 						<td align="center">${i.seq}</td>
-						<td align="center">${i.oriName}</td>
-						<td align="center">${i.sysName}</td>
+						<!-- html은 client의 컴퓨터에 뿌려주는거기때문에 서버의 파일 위치를 잘 지정해주어야함. -->
+						<td align="center"><a href="/download.file?sysName=${i.sysName }&oriName=${i.oriName}"> ${i.oriName}</a></td>
 						<td align="center">${i.parent_seq}</td>
 					</tr>
 				</c:forEach>

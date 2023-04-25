@@ -44,7 +44,7 @@ public class replyController extends HttpServlet {
 			try {
 				int re_seq = Integer.parseInt(request.getParameter("re_seq"));
 				int re_pa_seq = Integer.parseInt(request.getParameter("re_pa_seq"));
-				System.out.println("삭제할 댓글 seq"+re_seq);
+				System.out.println(re_pa_seq+"의 삭제할 댓글 seq"+re_seq);
 				
 				int result = replyDAO.getInstance().deleteReply(re_seq);
 				

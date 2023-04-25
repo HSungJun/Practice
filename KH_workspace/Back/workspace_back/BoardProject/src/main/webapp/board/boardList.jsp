@@ -62,9 +62,8 @@
 
 		<tr>
 			<td align="center">UserID : ${sessionScope.loginId}</td>
-			<td colspan="2"></td>
-			<td colspan="1">
-			<input type="button" value="파일리스트" id="filelist"></td>
+			<td colspan="3"></td>
+			
 			<td align="right">
 			<input type="button" value="작성하기" id="write"></td>
 		</tr>
@@ -86,9 +85,6 @@
 			location.href = "/board/write.jsp";
 		})
 		
-		$("#filelist").on("click",function(){
-			location.href = "/list.file";
-		})
 	</script>
 </body>
 </html>
