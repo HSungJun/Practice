@@ -1,0 +1,167 @@
+아래의 요구사항을 확인하고 그에 맞는 UI테스트 프로그램을 작성하세요.
+
+<<요구사항>>
+
+# 다음의 모든 작업은 UI테스팅 프로그램을 작성하여 수행하세요. ( 자동화 라이브러리는 selenium , 브라우저는 크롬을 활용하세요. )
+
+# UI테스트를 진행할 페이지는 https://www.iei.or.kr/main/main.kh 입니다.
+
+# UI테스트만을 목적으로 하는 문제이므로 예외처리 구문은 자유롭게 작성하세요.
+
+1. 다음 조건에 맞게 UI테스트 환경을 설정하세요.
+
+- 테스팅에 사용되는 프레임워크는 Selenium이며 크롬 브라우저를 사용합니다.
+
+2. 문제에 제시된 홈페이의 로그인 페이지로 이동 후, 본인 계정으로 로그인을 수행하세요.
+
+- 로그인 수행은 로그인 버튼에 지정된 자바스크립트 함수를 통해 진행하세요.
+
+- 로그인 수행 후, 페이지 제목이 "수강생 평가"가 될 때까지 프로그램을 대기시키세요.
+
+3. 로그인 수행 후, "우리반 게시판" 을 눌러 게시판으로 이동합니다.
+
+- Link정보를 확인한 후, 자바스크립트를 통해 이동하세요.
+
+- 실행 후 페이지 제목이 "우리반 게시판" 이 될 때까지 프로그램을 대기시키세요.
+
+4. 우리반 게시판으로 이동한 후, 글 작성 화면으로 이동하세요.
+
+- 글쓰기 버튼이 가진 자바스크립트를 이용해 이동하세요.
+
+- 실행 후, 글쓰기 Form의 제목 부분이 클릭가능 한 시점까지 프로그램을 대기시키세요.
+
+5. 글 작성 화면으로 이동 후, 제목 부분에 다음과 같이 자동으로 작성합니다.
+
+- "시험문제 답안 작성 중 입니다. 제목 - 홍길동(수험자 이름)"
+
+- id 속성을 이용해 작성하세요
+
+6. 글 내용 작성 부분은 기존 문서와 프레임이 다릅니다. 코드를 분석하여 frame을 변경하세요.
+
+7. 변경 후, 내용 작성부분에 다음과 같이 자동으로 작성합니다.
+
+- "시험문제 답안 작성 중 입니다. 내용 - frame 처리"
+
+- 클래스 이름을 이용해 작성하세요.
+
+8. 작성 완료 버튼은 현재 문서와 다른 프레임에 위치합니다. 코드를 분석하여 frame을 변경하세요.
+
+9. 작성완료 버튼을 누르세요.
+
+- 실행은 버튼에 지정된 자바스크립트를 통해 실행하세요.
+
+10. 작성이 성공적으로 되었다는 alert 창이 뜨면 확인 버튼을 누르세요.
+
+- alert() 창이 뜰때까지 대기하다가 누르세요.
+
+- 실제 글이 작성되었는지 확인하세요.
+
+전체 코드를 올려주세요
+
+
+
+
+1. Selenium 프레임워크 관련 라이브러리가 모두 첨부 되었는지 확인
+1-1. By, JavascriptExecutor, WebDriver, WebElement, ChromeDriver, ExpectedConditions, WebDriverWait 의 첨부를 확인.
+
+1-2. 웹드라이버 Binary 파일의 시스템 등록 코드 확인
+
+   
+2. 로그인 페이지로 접속하여 로그인 하고 , 적절한 타이밍까지 대기하기.
+2-1. 로그인 페이지로 WebDriver 의 get 메서드로 이동.
+
+2-2. 페이지 제목이 "수강생 평가"가 될 때까지 대기하기.
+
+   
+3. 로그인 수행 후, "우리반 게시판" 을 눌러 게시판으로 이동한 후, 적절한 타이밍까지 대기하기.
+3-1. 우리반 게시판에 걸려있는 Link를 확인 후 , JavaScript 실행으로 이동.
+
+3-2. 이동 후, 페이지 제목이 "우리반 게시판"이 될 때까지 프로그램 대기하기.
+
+   
+4. 글 쓰기 버튼을 눌러 글 작성 화면으로 이동한 후, 적절한 타이밍 까지 대기하기.
+4-1. 글 쓰기 버튼에 걸려있는 자바스크립트 함수를 이용해 글작성 화면으로 페이지 이동.
+
+4-2. 페이지 이동 후, 글 작성 화면에서 제목 부분이 클릭 가능할 때까지 프로그램 대기.
+
+   
+5. 글 작성 화면으로 이동되었다면, 제목 부분에 다음 내용을 작성. "시험문제 답안 작성 중 입니다. 제목 - 홍길동"
+5-1. findElement(By.id("title")) 을 통해 제목 선택.
+
+5-2. sendKeys 를 통해 제목 입력
+
+   
+6. 글 내용을 작성하는 테스트 코드를 작성.
+6-1. 글 내용을 작성하려면 frame handle이 다르므로 frame 변경 코드를 작성.   
+7. 변경된 프레임에서 내용 작성부분에 다음과 같이 작성. "시험문제 답안 작성 중 입니다. 내용 - frame 처리"
+7-1. 프레임 내에 클래스 이름으로 단 하나 존재하므로, className을 통해 가져온 후 작성   
+8. 글 작성 완료 버튼을 눌러 글 작성을 완료하세요.
+8-1. 글 작성 버튼은 7번 문제에서 프레임 변경 후, 현재 프레임에 존재하지 않으므로 parent frame으로 변경.   
+9. 프레임 변경이 완료되었다면 작성 완료 버튼을 눌러 완료.
+9-1. 버튼에 연결되어있는 자바스크립트를 통해 작성 완료 실행   
+10. 작성이 완료되었다는 확인창이 뜨면 확인 버튼을 누르고, 작성된 글 확인.
+10-1. 등록버튼을 누른 후, alert창이 뜨는지 대기.
+
+10-2. alert 창의 뜬 후, 확인 버튼을 누르기 위해 frame을 alert창으로 변경 후 확인 클릭.
+
+10-3. 드라이버 자원 반납
+
+   
+
+
+
+
+
+
+package test0410;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Test0410 {
+	public static void main(String[] args) {
+		
+		WebDriver driver = new ChromeDriver();
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));		
+		
+		driver.get("https://www.iei.or.kr/main/main.kh");
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#head_top_nav > div.head_top_right > a:nth-child(1)")));
+		WebElement login = driver.findElement(By.cssSelector("#head_top_nav > div.head_top_right > a:nth-child(1)"));
+		login.click();
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		
+		WebElement id = driver.findElement(By.id("id"));
+		id.sendKeys("sungjun960");
+		WebElement pw = driver.findElement(By.id("password"));
+		pw.sendKeys("tnwls960@");
+		
+		
+		WebElement loginbtn = driver.findElement(By.linkText("로그인"));
+		loginbtn.click();
+		
+		
+		
+		wait.until(ExpectedConditions.titleIs("KH정보교육원 - 마이페이지"));		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"right_nav_e\"]/ul[2]/li[1]")));
+		WebElement board = driver.findElement(By.xpath("//*[@id=\"right_nav_e\"]/ul[2]/li[1]"));
+		board.click();
+		
+		wait.until(ExpectedConditions.titleIs("KH정보교육원 - 우리반 게시판"));		
+		
+		WebElement write = driver.findElement(By.xpath("//*[@id=\"content_sub_wrap\"]/div[2]/div[3]/a"));
+		write.click();
+		
+		
+		
+		WebElement title = driver.findElement(By.id("title"));
+		wait.until(ExpectedConditions.numberOfElementsToBe(By.id("title"), 1));
+		title.sendKeys("시험문제 답안 작성 중 입니다. 홍성준");
